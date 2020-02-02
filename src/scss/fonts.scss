@@ -1,0 +1,24 @@
+@import 'color.scss';
+@font-face {
+	font-family: Cyr; /* Гарнитура шрифта */
+	src: url(../fonts/Pollock1CTT.ttf); /* Путь к файлу со шрифтом */
+}
+@font-face {
+	font-family: Pollock1CTT; /* Гарнитура шрифта */
+	src: url(../fonts/Pollock1CTT.ttf); /* Путь к файлу со шрифтом */
+}
+a{
+	color:$Light;
+	text-decoration:none;
+	
+}
+.headerCenter{
+	&__link{
+		font-family:"Impact";
+	}
+}
+.footer{
+	&__text{
+		font-family:"arial";
+	}
+}
