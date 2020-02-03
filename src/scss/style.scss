@@ -117,7 +117,7 @@ header,.navigation{
 		margin-left:2%;
 	}
 	&__title{
-		margin:0.3em;
+		margin:0.4em;
 		height:30px;
 	}
 	&__new{
@@ -126,6 +126,9 @@ header,.navigation{
 		flex-wrap:wrap;
 		height:100%;
 	}
+}
+.text{
+	text-align:center;
 }
 .bottom{
 	display:flex;

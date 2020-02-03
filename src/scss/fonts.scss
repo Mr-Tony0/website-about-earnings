@@ -7,6 +7,10 @@
 	font-family: Pollock1CTT; /* Гарнитура шрифта */
 	src: url(../fonts/Pollock1CTT.ttf); /* Путь к файлу со шрифтом */
 }
+$title:"Comic Sans MS";
+$menu:Impact;
+$text:"arial";
+
 a{
 	color:$Light;
 	text-decoration:none;
@@ -14,17 +18,25 @@ a{
 }
 .headerCenter{
 	&__link{
-		font-family:"Impact";
+		font-family:$menu;
 	}
 }
 
 .footer{
 	&__text{
-		font-family:"arial";
+		font-family:$text;
 	}
 }
 .navigation{
 	&__link{
-		font-family:"Impact";
+		font-family:$menu;
+	}
+}
+.text{
+	&__title{
+		font-family:$title;
+	}
+	&__descript{
+		font-family:$text;
 	}
 }
