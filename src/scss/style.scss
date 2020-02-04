@@ -91,19 +91,24 @@ header,.navigation{
 .container{
 	width:88%;
 	margin:0 auto;
-	border:1px solid black;
+	border:1px solid transparent;
+	
+	
 }
 .top{
-	margin-top:12%;
-	border:1px solid black;
+	margin-top:10%;
+	box-shadow:0 0 10px rgba(0,0,0,0.5);
 	width:100%;
-	height:600px;
+	height:500px;
 	display:flex;
 	justify-content:space-between;
 	&__left{
 		height:100%;
 		width:50%;
-		background:rgba(0,0,0,0.5);
+		background-image:url(../img/leadbit.png);
+		@include imag;
+		display:flex;
+		justify-content:space-between;
 	}
 	&__right{
 		height:100%;
@@ -115,10 +120,14 @@ header,.navigation{
 		width:250px;
 		background:rgba(231,76,60,0.5);
 		margin-left:2%;
+		text-align:center
 	}
 	&__title{
 		margin:0.4em;
 		height:30px;
+	}
+	&__descript{
+		margin:12px;
 	}
 	&__new{
 		display:flex;
@@ -126,16 +135,67 @@ header,.navigation{
 		flex-wrap:wrap;
 		height:100%;
 	}
+	&__img{
+		width:100%;
+		height:100%;
+		@include imag;
+		
+	}
+	&__hover{
+		width:100%;
+		height:100%;
+		opacity:0;
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		justify-content:center;
+		&:hover{
+			background:rgba(0,0,0,0.5);
+			opacity:1;
+		}
+	}
+	&__button{
+		color:$elements;
+		font-family:arial;
+		font-size:25px;
+		border:2px solid $elements;
+	}
+}
+.center{
+	align-self:center;
+	color:white;
+	margin-left:20px;
+	font-size:20px;
+}
+.start{
+	color:white;
+	font-family:$menu;
+	background:$elements;
+	height:50px;
+	width:120px;
+	min-height:50px;
+	min-width:120px;
+	margin:5%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }
 .text{
 	text-align:center;
+	width:70%;
+	margin-left:15%;
+	&__title{
+		color:$elements;
+	}
 }
 .bottom{
+	box-shadow:0 0 10px rgba(0,0,0,0.5);
 	display:flex;
 	flex-wrap:wrap;
 	width:100%;
 	justify-content:space-around;
 	min-height:520px;
+	margin-bottom:100px;
 	&__element{
 		margin-top:5%;
 		width:30%;
@@ -156,7 +216,8 @@ header,.navigation{
 	&__title{
 		margin-block-end: 0.5em;
 		margin-block-start: 0.5em;
-		color:$elements;
+		color:$Dark;
+		font-family:$text;
 	}
 	&__text{
 		padding:0;
@@ -232,6 +293,14 @@ header,.navigation{
 
 
 //admin stile
+@media screen and (min-width: 924px) and (max-width: 1830px){
+	.top{
+		&__element{
+			height:110px;;
+		}
+	}
+	
+}
 @media screen and (min-width: 924px) and (max-width: 1200px){
 	.top{
 		height:1000px;
@@ -289,6 +358,19 @@ header,.navigation{
 			width:100%;
 			height:85%;
 		}
+		&__title{
+			font-size:1.2em;
+		}
+	}
+	.start{
+		height:40px;
+		width:100px;
+		min-height:40px;
+		min-width:100px;
+		//font-size:16px;
+	}
+	.center{
+		font-size:16px;
 	}
 	
 }
@@ -375,6 +457,16 @@ header,.navigation{
 		}
 		&__center{
 			width:100%;
+		}
+	}
+	.text{
+		width:100%;
+		margin:0;
+		&__title{
+			font-size:1.2em;
+		}
+		&__descript{
+			font-size:14px;
 		}
 	}
 	
