@@ -6,3 +6,12 @@
 	background-repeat:no-repeat;
 	margin:0 auto;
 }
+@mixin redBut{
+	width:130px;
+	height:40px;
+	border:1px solid $elements;
+	background:$elements;
+	font-family:$text;
+	color:white;
+	
+}

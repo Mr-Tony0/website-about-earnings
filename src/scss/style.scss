@@ -247,6 +247,42 @@ header,.navigation{
 	}
 	
 }
+.content{
+	width:50%;
+	box-shadow:0 0 10px rgba(0,0,0,0.5);
+	padding:10px;
+	margin-bottom:50px;
+	margin-top:50px;
+	&__element{
+		width:100%;
+		height:100px;
+		display:flex;
+		margin:10px;
+	}
+	&__img{
+		width:25%;
+		height:100%;
+		@include imag;
+	}
+	&__text{
+		width:75%;
+		height:100%;
+		text-align:left;
+		color:darken($Dark,20%);
+	}
+	&__title{
+		font-size:1.2em;
+		margin:0.4em;
+		font-family:$title;
+		&:hover{
+			color:$elements;
+		}
+	}
+	&__descript{
+		margin:0.4em;
+		font-family:$text;
+	}
+}
 .footer{
 	display:flex;
 	width:100%;
@@ -285,14 +321,148 @@ header,.navigation{
 }
 
 
+//katalog
+
+.filter{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:70%;
+	flex-wrap:wrap;
+}
+.type{
+	margin:10px;
+	&__text{
+		color:darken($Dark,20%);
+		font-family:$text;
+	}
+	&__select{
+		height:30px;
+		width:180px;
+		color:$Dark;
+		font-family:$text;
+		background:$blockColor;
+	}
+}
+.categories{
+	width:70%;
+	align-items:center;
+	flex-wrap:wrap;
+	&__button{
+		margin:10px;
+		@include redBut;
+		font-size:11px;
+		border-radius:20px;
+		&:hover{
+			background:transparent;
+			color:darken($Dark,20%)
+		}
+	}
+	&__title{
+		color:$elements;
+		font-family:$title;
+	}
+}
+.go{
+	@include redBut;
+	margin:10px;
+	&:hover{
+		box-shadow:0 0 10px rgba(0,0,0,0.5);
+	}
+}
 
 
-
-
-
-
-
+@media screen and (min-width: 500px) and (max-width: 700px){
+	.filter{
+		flex-wrap:no-wrap;
+	}
+	.type{
+		margin:5px;
+		&__text{
+			font-size:15px;
+		}
+		&__select{
+			width:125px;
+			height:30px;
+			font-size:12px;
+		}
+	}
+	
+}
+@media screen and (min-width: 1008px) and (max-width: 1375px){
+	.content{
+		width:60%;
+		&__descript{
+			font-size:14px;
+		}
+	}
+	
+}
+@media screen and (min-width: 600px) and (max-width: 1008px){
+	.content{
+		width:100%;
+		&__element{
+			height:120px;
+		}
+		&__descript{
+			font-size:14px;
+		}
+	}
+	
+}
+@media screen and (min-width: 320px) and (max-width: 600px){
+	.content{
+		width:80%;
+		&__element{
+			flex-direction:column;
+			height:300px;
+			margin:0;
+		}
+		&__descript{
+			font-size:14px;
+		}
+		&__text{
+			width:100%;
+			height:50%;
+		}
+		&__img{
+			height:50%;
+			width:100%;
+		}
+		&__title{
+			font-size:16px;
+		}
+		&__descript{
+			font-size:13px;
+		}
+	}
+	
+}
+@media screen and (min-width: 600px) and (max-width: 850px){
+	.content{
+		width:100%;
+		&__element{
+			height:120px;
+		}
+		&__descript{
+			font-size:14px;
+		}
+	}
+	
+}
 //admin stile
+@media screen and (min-width: 320px) and (max-width: 992px){
+	.filter{
+		width:100%;
+	}
+	
+}
+@media screen and (min-width: 320px) and (max-width: 760px){
+	.categories{
+		width:100%;
+	}
+	
+}
 @media screen and (min-width: 924px) and (max-width: 1830px){
 	.top{
 		&__element{
@@ -471,12 +641,6 @@ header,.navigation{
 	}
 	
 }
-@media screen and (min-width: 320px) and (max-width: 1550px){
-	.newFilms__button{
-		font-size:20px;
-	}
-}
-
 @media screen and (min-width: 750px) and (max-width: 1100px){
 	.bottom{
 		&__element{
@@ -486,13 +650,15 @@ header,.navigation{
 			width:70%;
 		}
 	}
-	.slider{
-		height:500px;
-	}
+	
 }
 @media screen and (min-width: 320px) and (max-width: 425px){
-	.slider{
-		height:250px;
+	.categories{
+		&__button{
+			height:30px;
+			width:118px;
+			font-size:10px;
+		}
 	}
 }
 @media screen and (min-width: 500px) and (max-width: 810px){
