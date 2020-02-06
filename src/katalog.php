@@ -13,14 +13,14 @@
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="index.html"><img class="logo__img" src="./img/logo.png" alt=""></a>
+				<a href="index.php"><img class="logo__img" src="./img/logo.png" alt=""></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.html">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="soft.html">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="keys.html">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="new.html">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="soft.php">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="keys.php">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="new.php">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">
@@ -53,13 +53,13 @@
 		</div>
 		<center>
 		<div class="categories">
-			<h2 class="categories__title">Категории программ для заработка</h2>
-			<button class="categories__button">Браузеры</button>
-			<button class="categories__button">Работа с текстом</button>
-			<button class="categories__button">Хостинг</button>
-			<button class="categories__button">VPN</button>
-			<button class="categories__button">Proxy</button>
-			<button class="categories__button">Платежные системы</button>
+			<h2 class="categories__title">Категории заработка</h2>
+			<button class="categories__button">Для новичков</button>
+			<button class="categories__button">Пассивный</button>
+			<button class="categories__button">На сайте</button>
+			<button class="categories__button">Арбитраж трафика</button>
+			<button class="categories__button">Фриланс</button>
+			<button class="categories__button">На моб. приложениях</button>
 		</div>
 		<div class="filter">
 			<div class="type">
@@ -99,6 +99,7 @@
 		</div>
 		<button class="go">Применить</button>
 		<div class="content">
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/crypt.png)"></div>
 				<div class="content__text">
@@ -107,6 +108,8 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/arbit.png)"></div>
 				<div class="content__text">
@@ -115,6 +118,8 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/freelance.png)"></div>
 				<div class="content__text">
@@ -123,6 +128,8 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/passiv.png)"></div>
 				<div class="content__text">
@@ -131,6 +138,8 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/start.png)"></div>
 				<div class="content__text">
@@ -139,6 +148,8 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/leadbit.png)"></div>
 				<div class="content__text">
@@ -147,6 +158,8 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/partner.png)"></div>
 				<div class="content__text">
@@ -155,6 +168,8 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
+			<a href="./state.php">
 			<div class="content__element">
 				<div class="content__img" style="background-image:url(./img/crypt.png)"></div>
 				<div class="content__text">
@@ -163,6 +178,7 @@
 					это не точно так как я еще не смотрел сколько тут имееться</p>
 				</div>
 			</div>
+			</a>
 		</div>
 		</center>
 	</section>

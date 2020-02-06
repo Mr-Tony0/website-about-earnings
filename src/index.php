@@ -13,14 +13,14 @@
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="index.html"><img class="logo__img" src="./img/logo.png" alt=""></a>
+				<a href="index.php"><img class="logo__img" src="./img/logo.png" alt=""></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.html">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="soft.html">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="keys.html">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="new.html">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="soft.php">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="keys.php">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="new.php">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.html">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">
@@ -54,42 +54,42 @@
 				<h2 class="top__title">Новые способы заработка</h2>
 				<div class="top__new">
 					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('')" >
+						<div class="top__img" id ="" style= "background-image:url('./img/arbit.png')" >
 							<a href="#"><div class="top__hover">
 							<span class="top__button">Подробнее</span>
 							</div></a>
 						</div>
 					</div>
 					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('')" >
+						<div class="top__img" id ="" style= "background-image:url('./img/passiv.png')" >
 							<a href="#"><div class="top__hover">
 							<span class="top__button">Подробнее</span>
 							</div></a>
 						</div>
 					</div>
 					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('')" >
+						<div class="top__img" id ="" style= "background-image:url('./img/crypt.png')" >
 							<a href="#"><div class="top__hover">
 							<span class="top__button">Подробнее</span>
 							</div></a>
 						</div>
 					</div>
 					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('')" >
+						<div class="top__img" id ="" style= "background-image:url('./img/site.png')" >
 							<a href="#"><div class="top__hover">
 							<span class="top__button">Подробнее</span>
 							</div></a>
 						</div>
 					</div>
 					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('')" >
+						<div class="top__img" id ="" style= "background-image:url('./img/freelance.png')" >
 							<a href="#"><div class="top__hover">
 							<span class="top__button">Подробнее</span>
 							</div></a>
 						</div>
 					</div>
 					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('')" >
+						<div class="top__img" id ="" style= "background-image:url('./img/leadbit.png')" >
 							<a href="#"><div class="top__hover">
 							<span class="top__button">Подробнее</span>
 							</div></a>
