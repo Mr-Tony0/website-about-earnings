@@ -83,7 +83,7 @@ if (isset($_POST['submit'])){
 <body>
 <form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
 <?php
-	$conect = mysqli_connect('localhost','root','','films');
+	$conect = mysqli_connect('localhost','root','','posting');
 	if (isset($_POST['admin'])){
 		
 		$login = mysqli_real_escape_string($conect, trim($_POST['login']));

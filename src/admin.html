@@ -15,22 +15,64 @@
 			<center>
 				<h1 class="text__title" contenteditable="true">(Заголовок из ся)</h1>
 				<div class="categories">
-					<button contenteditable="true" class="categories__button">Для новичков</button>
-					<button contenteditable="true" class="categories__button">Пассивный</button>
-					<button contenteditable="true" class="categories__button">Арбитраж трафика</button>
+					<h2 class="categories__title">Категории заработка</h2>
+					<div class="categories__block">
+						<div class="categories__element">
+							<input type="checkbox" name="newUser">
+							<span>Для новичков</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="passiv">
+							<span>Пассивный</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="site">	
+							<span>На сайте</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="arbit">
+							<span>Арбитраж трафика</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="freelance">
+							<span>Фриланс</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="mob">
+							<span>На моб. приложениях</span>
+						</div>
+					</div>
 				</div>
 			</center>
 		</div>
 		<div class="previe" style="background-image:url(./img/leadbit.png)">
+			<p>Установите превью статьи:</p>
+			<input type="file" name="loadImg" id="imgFile"/>
 		</div>
 		<div class="text katalog-text">
 			<center>
 				<h2 class="text__title" contenteditable="true">(Заголовок из ся h2)</h2>
-				<!--link--><button class="go">Регистрация</button>
+				<!--link--><input type="text"name="partner"placeholder="Ссылка на регистрацию"/>
 			</center>
 		</div>
 		<div class="state">
-			<!--select--><p><strong>Вид заработка: Социальные сети</strong></p>
+			<div class="type">
+				<p class="type__text">Вид заработка:</p>
+				<select class="type__select">
+					<option>Выбирите вид заработка</option>
+					<option>Социальные сети</option>
+					<option>Партнерские программы</option>
+					<option>Написание отзывов</option>
+					<option>Создание сайтов</option>
+					<option>Просмотр рекламы</option>
+					<option>Криптавалюта</option>
+					<option>Прохождение опросов</option>
+					<option>С вложениями</option>
+					<option>Без вложений</option>
+					<option>Другие виды заработка</option>
+				</select>
+			</div>
+			
 			<p contenteditable="true">
 				Идейные соображения высшего порядка, а также укрепление и развитие структуры 
 				в значительной степени обуславливает создание форм развития. Разнообразный и богатый
@@ -51,7 +93,7 @@
 		<div class="plus-minus">
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Плюсы:</h3>
-				<ul class="plus-minus__ul">
+				<ul  contenteditable="true" class="plus-minus__ul">
 					<li contenteditable="true">Первый пункт</li>
 					<li contenteditable="true">Второй пункт</li>
 					<li contenteditable="true">Третий пункт</li>
@@ -62,7 +104,7 @@
 			</div>
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Минусы:</h3>
-				<ul class="plus-minus__ul">
+				<ul  contenteditable="true" class="plus-minus__ul">
 					<li contenteditable="true">Первый пункт</li>
 					<li contenteditable="true">Второй пункт</li>
 					<li contenteditable="true">Третий пункт</li>
@@ -75,11 +117,25 @@
 		<div class="level">
 			<div class="level__element">
 				<h3 class="level__title">Уровень вашего дохода:</h3>
-				<!--select--><p class="level__text">Средний</p>
+				<div class="type">
+					<select class="type__select">
+						<option>Выбирите сложность</option>
+						<option>Легко</option>
+						<option>Нормально</option>
+						<option>Сложно</option>
+					</select>
+				</div>
 			</div>
 			<div class="level__element">
 				<h3 class="level__title">Сложность получения прибыли:</h3>
-				<!--select--><p class="level__text">Средний</p>
+				<div class="type">
+						<select class="type__select">
+							<option>Выбирите доходность</option>
+							<option>Низкая</option>
+							<option>Средняя</option>
+							<option>Высокая</option>
+						</select>
+					</div>
 			</div>
 		</div>
 		<div class="state">
@@ -102,8 +158,8 @@
 		</div>
 		<center>
 			<div class="date">
-				<p class="date__element rang">Отзывы</p>
-				<p contenteditable="true" class="date__element number">04.12.17</p>
+				<input type="text" class="date__element date__link" name="rang" placeholder="ссылка на отзывы(если есть)">
+				<input class="date__element number" type="date" name="date"/>
 			</div>
 		</center>
 	</section>
