@@ -43,6 +43,11 @@
 		<div class="text katalog-text">
 			<center>
 				<h1 class="text__title">(Заголовок из ся)</h1>
+				<div class="categories">
+					<button class="categories__button">Для новичков</button>
+					<button class="categories__button">Пассивный</button>
+					<button class="categories__button">Арбитраж трафика</button>
+				</div>
 			</center>
 		</div>
 		<div class="previe" style="background-image:url(./img/leadbit.png)">
@@ -54,6 +59,7 @@
 			</center>
 		</div>
 		<div class="state">
+			<p><strong>Вид заработка: Социальные сети</strong></p>
 			<p>
 				Идейные соображения высшего порядка, а также укрепление и развитие структуры 
 				в значительной степени обуславливает создание форм развития. Разнообразный и богатый

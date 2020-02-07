@@ -422,6 +422,72 @@ header,.navigation{
 .news{
 	height:800px;
 }
+
+
+
+
+.column{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top:10%;
+	margin-bottom:10%;
+	&__input{
+		border: 2px solid $elements;
+		border-radius:6px;
+		height:20px;
+		width:200px;
+		color:$Dark;
+	}
+	&__textarea{
+		border: 2px solid $elements;
+		border-radius:6px;
+		color:$Dark;
+		width:280px;
+		height:150px;
+	}
+	&__button{
+		margin-top:2%;
+		border: 2px solid $elements;
+		border-radius:6px;
+		height:40px;
+		width:120px;
+		background:$elements;
+		color:$Dark;
+		font-family:$title;
+	}
+	&__title{
+		font-family:$title;
+	}
+	&__file{
+		
+	}
+}
+.row{
+	display:flex;
+	align-items:center;
+	&__selsect{
+		background:$blockColor;
+		color:$elements;
+		border:2px solid $elements;
+	}
+}
+
+.center{
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+
+}
+.error{
+	padding-left:20%;
+	height:600px;
+	&__title{
+		margin-top:10%;
+		color:$elements;
+	}
+}
+
 @media screen and (min-width: 500px) and (max-width: 700px){
 	.filter{
 		flex-wrap:no-wrap;
