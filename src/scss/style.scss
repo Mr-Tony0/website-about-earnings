@@ -376,6 +376,9 @@ header,.navigation{
 .go{
 	@include redBut;
 	margin:10px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 	&:hover{
 		box-shadow:0 0 10px rgba(0,0,0,0.5);
 	}
@@ -506,7 +509,14 @@ header,.navigation{
 		color:$elements;
 	}
 }
-
+.size{
+	height:400px;
+	width:250px;
+}
+.state-text{
+	width:100%;
+	height:500px;
+}
 @media screen and (min-width: 500px) and (max-width: 700px){
 	.filter{
 		flex-wrap:no-wrap;

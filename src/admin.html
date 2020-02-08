@@ -13,7 +13,11 @@
 	<section class="container">
 		<div class="text katalog-text">
 			<center>
-				<h1 class="text__title" contenteditable="true">(Заголовок из ся)</h1>
+				<input class="text__input" type="text" name="braus-title" placeholder="Введите заголовок для браузера"/></br></br>
+				<input class="text__input" type="text" name="braus-descript" placeholder="Введите description для браузера"/></br></br>
+				<input class="text__input" type="text" name="katalog-descript" placeholder="Введите description для каталога"/></br></br>
+				<input class="text__input" type="text" name="katalog-title" placeholder="Введите заголовок для каталога"/></br></br>
+				<input class="text__input" type="text" name="one-title" placeholder="Введите заголовок"/>
 				<div class="categories">
 					<h2 class="categories__title">Категории заработка</h2>
 					<div class="categories__block">
@@ -51,14 +55,14 @@
 		</div>
 		<div class="text katalog-text">
 			<center>
-				<h2 class="text__title" contenteditable="true">(Заголовок из ся h2)</h2>
-				<!--link--><input type="text"name="partner"placeholder="Ссылка на регистрацию"/>
+				<input class="text__title" type="text" name="two-title" placeholder="Введите заголовок"/></br></br>
+				<input type="text"name="partner"placeholder="Ссылка на регистрацию"/>
 			</center>
 		</div>
 		<div class="state">
 			<div class="type">
 				<p class="type__text">Вид заработка:</p>
-				<select class="type__select">
+				<select class="type__select" name="type">
 					<option>Выбирите вид заработка</option>
 					<option>Социальные сети</option>
 					<option>Партнерские программы</option>
@@ -73,44 +77,19 @@
 				</select>
 			</div>
 			
-			<p contenteditable="true">
-				Идейные соображения высшего порядка, а также укрепление и развитие структуры 
-				в значительной степени обуславливает создание форм развития. Разнообразный и богатый
-				опыт постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому
-				кругу (специалистов) участие в формировании новых предложений. Повседневная практика показывает, что
-				дальнейшее развитие различных форм деятельности требуют определения и уточнения существенных финансовых и 
-				административных условий. Не следует, однако забывать, что укрепление и развитие структуры представляет собой
-				интересный эксперимент проверки форм развития. Таким образом новая модель организационной деятельности влечет
-				за собой процесс внедрения и модернизации форм развития.
-			</p>
-			<p>
-				Идейные соображения высшего порядка, а также реализация намеченных плановых
-				заданий представляет собой интересный эксперимент проверки направлений прогрессивного развития.
-				Не следует, однако забывать, что сложившаяся структура организации требуют от нас анализа существенных финансовых 
-				и административных условий. Таким образом новая модель организационной деятельности требуют от нас анализа форм развития.
-			</p>
+			<textarea class="state-text" type="text" name="one-text" placeholder="первый текст статьи"></textarea>
 		</div>
 		<div class="plus-minus">
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Плюсы:</h3>
 				<ul  contenteditable="true" class="plus-minus__ul">
-					<li contenteditable="true">Первый пункт</li>
-					<li contenteditable="true">Второй пункт</li>
-					<li contenteditable="true">Третий пункт</li>
-					<li contenteditable="true">Первый пункт</li>
-					<li contenteditable="true">Второй пункт</li>
-					<li contenteditable="true">Третий пункт</li>
+					<textarea class="size" type="text" name="plus" placeholder="Плюсы"></textarea>
 				</ul>
 			</div>
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Минусы:</h3>
 				<ul  contenteditable="true" class="plus-minus__ul">
-					<li contenteditable="true">Первый пункт</li>
-					<li contenteditable="true">Второй пункт</li>
-					<li contenteditable="true">Третий пункт</li>
-					<li contenteditable="true">Первый пункт</li>
-					<li contenteditable="true">Второй пункт</li>
-					<li contenteditable="true">Третий пункт</li>
+					<textarea class="size" type="text" name="minus" placeholder="Минусы"></textarea>
 				</ul>
 			</div>
 		</div>
@@ -118,7 +97,7 @@
 			<div class="level__element">
 				<h3 class="level__title">Уровень вашего дохода:</h3>
 				<div class="type">
-					<select class="type__select">
+					<select class="type__select" name="hard">
 						<option>Выбирите сложность</option>
 						<option>Легко</option>
 						<option>Нормально</option>
@@ -129,7 +108,7 @@
 			<div class="level__element">
 				<h3 class="level__title">Сложность получения прибыли:</h3>
 				<div class="type">
-						<select class="type__select">
+						<select class="type__select" name="money">
 							<option>Выбирите доходность</option>
 							<option>Низкая</option>
 							<option>Средняя</option>
@@ -139,28 +118,14 @@
 			</div>
 		</div>
 		<div class="state">
-			<p contenteditable="true">
-				Идейные соображения высшего порядка, а также укрепление и развитие структуры 
-				в значительной степени обуславливает создание форм развития. Разнообразный и богатый
-				опыт постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому
-				кругу (специалистов) участие в формировании новых предложений. Повседневная практика показывает, что
-				дальнейшее развитие различных форм деятельности требуют определения и уточнения существенных финансовых и 
-				административных условий. Не следует, однако забывать, что укрепление и развитие структуры представляет собой
-				интересный эксперимент проверки форм развития. Таким образом новая модель организационной деятельности влечет
-				за собой процесс внедрения и модернизации форм развития.
-			</p>
-			<p contenteditable="true">
-				Идейные соображения высшего порядка, а также реализация намеченных плановых
-				заданий представляет собой интересный эксперимент проверки направлений прогрессивного развития.
-				Не следует, однако забывать, что сложившаяся структура организации требуют от нас анализа существенных финансовых 
-				и административных условий. Таким образом новая модель организационной деятельности требуют от нас анализа форм развития.
-			</p>
+			<textarea class="state-text" type="text" name="two-text" placeholder="Второй текст статьи"></textarea>
 		</div>
 		<center>
 			<div class="date">
 				<input type="text" class="date__element date__link" name="rang" placeholder="ссылка на отзывы(если есть)">
 				<input class="date__element number" type="date" name="date"/>
 			</div>
+			<button name="submit">go</button>
 		</center>
 	</section>
 <!--</form>-->

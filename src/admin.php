@@ -1,15 +1,14 @@
 <?php
-$conect = mysqli_connect('localhost','root','','films');
+$conect = mysqli_connect('localhost','root','','posting');
 
 
 
 if (isset($_POST['submit'])){	
 	$session = 1;
 	
-	$uploadImg = './film/img/';
+	$uploadImg = './post/img/';
 	$apendImg=date('YmdHis').rand(100,1000).'.jpg'; 
 	$uploadfile1 = "$uploadImg$apendImg";
-	$uploadVideo = './film/video/';
 	if(($_FILES['loadImg']['type'] == 'image/gif' || $_FILES['loadImg']['type'] == 'image/jpeg' || $_FILES['loadImg']['type'] == 'image/png') && ($_FILES['loadImg']['size'] != 0 and $_FILES['loadImg']['size']<=1512000)){ 
 		if (move_uploaded_file($_FILES['loadImg']['tmp_name'], $uploadfile1)){
 			$size = getimagesize($uploadfile1); 
@@ -27,30 +26,39 @@ if (isset($_POST['submit'])){
 	}
 
 
-
 	$name =  mysqli_real_escape_string($conect, trim($_POST['name']));
-	$name = preg_replace_callback('~(?<=\\A|[.!?])\\s*?[a-zа-яё]~u', function($m){
-		return mb_strtoupper($m[0], 'UTF-8');
-	}, $name);
-	
-	$janr = mysqli_real_escape_string($conect, trim($_POST['janr']));
-	$strana = mysqli_real_escape_string($conect, trim($_POST['strana']));
+	$brausTtitle =  mysqli_real_escape_string($conect, trim($_POST['braus-title']));
+	$brausDescript = mysqli_real_escape_string($conect, trim($_POST['braus-descript']));
+	$katalogTtitle = mysqli_real_escape_string($conect, trim($_POST['katalog-title']));
+	$katalogDescript = mysqli_real_escape_string($conect, trim($_POST['katalog-descript']));
+	$onePageTitle = mysqli_real_escape_string($conect, trim($_POST['one-title']));
+	$newUser = mysqli_real_escape_string($conect, trim($_POST['newUser']));
+	$passiv = mysqli_real_escape_string($conect, trim($_POST['passiv']));
+	$site = mysqli_real_escape_string($conect, trim($_POST['site']));
+	$arbit = mysqli_real_escape_string($conect, trim($_POST['arbit']));
+	$freelance = mysqli_real_escape_string($conect, trim($_POST['freelance']));
+	$mob = mysqli_real_escape_string($conect, trim($_POST['mob']));
+	$twoPageTitle = mysqli_real_escape_string($conect, trim($_POST['two-title']));
+	$partner = mysqli_real_escape_string($conect, trim($_POST['partner']));
+	$type = mysqli_real_escape_string($conect, trim($_POST['type']));
+	$oneText = mysqli_real_escape_string($conect, trim($_POST['one-text']));
+	$plus= mysqli_real_escape_string($conect, trim($_POST['plus']));
+	$minus= mysqli_real_escape_string($conect, trim($_POST['minus']));
+	$hard= mysqli_real_escape_string($conect, trim($_POST['hard']));
+	$money= mysqli_real_escape_string($conect, trim($_POST['money']));
+	$twoText= mysqli_real_escape_string($conect, trim($_POST['two-text']));
+	$rang= mysqli_real_escape_string($conect, trim($_POST['rang']));
+	$date= mysqli_real_escape_string($conect, trim($_POST['date']));
 	$loadImg = $uploadfile1;
-	$description = mysqli_real_escape_string($conect, trim($_POST['description']));
-	$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
-	$date = mysqli_real_escape_string($conect, trim($_POST['data']));
-	$time = mysqli_real_escape_string($conect, trim($_POST['time']));
-	$loadPlayerLink = mysqli_real_escape_string($conect, trim($_POST['loadPlayerLink']));
-	
-	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayerLink) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time) and strlen($description)<2139){
-		$query ="SELECT * FROM `film` WHERE name = '$name'";
+	if(!empty($brausTtitle) and !empty($brausDescript) and !empty($name) and !empty($katalogTtitle) and !empty($onePageTitle) and !empty($partner) and !empty($type) and !empty($oneText) and !empty($hard) and !empty($money) and !empty($loadImg) /*and strlen($brausTtitle)<2139*/){
+		$query ="SELECT * FROM `post` WHERE linkPartner = '$partner' AND name = '$name'";
 		$data = mysqli_query($conect, $query);
-		if(mysqli_num_rows($data) == 0 and $addImg == 1 ){
-			$query ="INSERT INTO`film`(name, description, img, rang, data, style, country, time, videoLink) VALUES('$name', '$description', '$loadImg','$rang', '$date', '$janr', '$strana', '$time', '$loadPlayerLink')";
+		if(mysqli_num_rows($data) == 0 ){
+			$query ="INSERT INTO`post`(`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$oneText', '$twoText', '$loadImg','$partner', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$site', '$freelance', '$arbit', '$type', '$newUser', '$passiv', '$mob')";
 			mysqli_query($conect, $query);
 			//echo'фильм добавлен';
 			mysqli_close($conect);
-			header ('Location: film.php');
+			header ('Location: state.php');
 			exit();
 		}
 		else{
@@ -111,98 +119,125 @@ if (isset($_POST['submit'])){
 	}else{
 		if($session == 1){ 
 		
-			echo ' <center>
-	<h2>Добро пожаловать на KINgaroo admin.</h2>
-	<p>
-		Здесь вы можете добавить фильм на сайт KINgaroo.</br>
-		Заполните все поля что бы добавить фильм на сайт!
-	</p>
-</center>
-<div class="center">
-	<div class="column">
-		<p>название фильма</p>
-		<input class="column__input" type="text" name="name">
-		<p>Укажите жанр фильма страну его выпуска</p>
-		<div class="row">
+			echo '<section class="container">
+		<div class="text katalog-text">
+			<center>
+				<input class="text__input" type="text" name="name" placeholder="Введите имя файла"/></br></br>
+				<input class="text__input" type="text" name="braus-title" placeholder="Введите заголовок для браузера"/></br></br>
+				<input class="text__input" type="text" name="braus-descript" placeholder="Введите description для браузера"/></br></br>
+				<input class="text__input" type="text" name="katalog-descript" placeholder="Введите description для каталога"/></br></br>
+				<input class="text__input" type="text" name="katalog-title" placeholder="Введите заголовок для каталога"/></br></br>
+				<input class="text__input" type="text" name="one-title" placeholder="Введите заголовок"/>
+				<div class="categories">
+					<h2 class="categories__title">Категории заработка</h2>
+					<div class="categories__block">
+						<div class="categories__element">
+							<input type="checkbox" name="newUser">
+							<span>Для новичков</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="passiv">
+							<span>Пассивный</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="site">	
+							<span>На сайте</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="arbit">
+							<span>Арбитраж трафика</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="freelance">
+							<span>Фриланс</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="mob">
+							<span>На моб. приложениях</span>
+						</div>
+					</div>
+				</div>
+			</center>
+		</div>
+		<div class="previe" style="background-image:url(./img/leadbit.png)">
+			<p>Установите превью статьи:</p>
+			<input type="file" name="loadImg" id="imgFile"/>
+		</div>
+		<div class="text katalog-text">
+			<center>
+				<input class="text__title" type="text" name="two-title" placeholder="Введите заголовок"/></br></br>
+				<input type="text"name="partner"placeholder="Ссылка на регистрацию"/>
+			</center>
+		</div>
+		<div class="state">
+			<div class="type">
+				<p class="type__text">Вид заработка:</p>
+				<select class="type__select" name="type">
+					<option>Выбирите вид заработка</option>
+					<option>Социальные сети</option>
+					<option>Партнерские программы</option>
+					<option>Написание отзывов</option>
+					<option>Создание сайтов</option>
+					<option>Просмотр рекламы</option>
+					<option>Криптавалюта</option>
+					<option>Прохождение опросов</option>
+					<option>С вложениями</option>
+					<option>Без вложений</option>
+					<option>Другие виды заработка</option>
+				</select>
+			</div>
 			
-			<select  name="janr" class="row__selsect">
-				<option>Жанры</option>
-				<option>комедия</option>
-				<option>триллер</option>
-				<option>боевик</option>
-				<option>мелодрамма</option>
-				<option>криминал</option>
-				<option>драма</option>
-				<option>ужасы</option>
-				<option>приключения</option>
-				<option>семейные</option>
-				<option>фантастика</option>
-				<option>документальный</option>
-				<option>военный</option>
-				<option>исторический</option>
-				<option>биография</option>
-				<option>вестерн</option>
-				<option>мкльтфильм</option>
-				<option>детектив</option>
-				<option>аниме</option>
-			</select>
-			<select  name="strana" class="row__selsect">
-				<option>Страны</option>
-				<option>США</option>
-				<option>СССР</option>
-				<option>Франция</option>
-				<option>Великобритания</option>
-				<option>Беларусь</option>
-				<option>Россия</option>
-				<option>Германия</option>
-				<option>Гонконг</option>
-				<option>Индия</option>
-				<option>Испания</option>
-				<option>Италия</option>
-				<option>Казахстан</option>
-				<option>Канада</option>
-				<option>Украина</option>
-				<option>Япония</option>
-				<option>Австралия</option>
-				<option>Бельгия</option>
-				<option>Польша</option>
-				<option>Китай</option>
-				<option>Швеция</option>
-				<option>Дания</option>
-				<option>Южная Корея</option>
-				<option>Австрия</option>
-				<option>Израиль</option>
-				<option>Турция</option>
-				<option>Колумбия</option>
-				<option>Швейцария</option>
-				<option>другое...</option>
-			</select>
+			<textarea class="state-text" type="text" name="one-text" placeholder="первый текст статьи"></textarea>
 		</div>
-		<p>описание</p>
-		<textarea class="column__textarea" name="description" placeholder = "Количество символов не должно превышать 1150..."></textarea>
-		
-		<p>рейтинг фильма от 0 до 10 по IMDb</p>
-		<input class="column__input" type="number" name="rang" step="any" >
-		<div class="row">
-			<div class="column">
-				<p>установите заставку фильма</p>
-				<input class="column__file" type="file" name="loadImg" id="imgFile"/>
+		<div class="plus-minus">
+			<div class="plus-minus__element">
+				<h3 class="plus-minus__title">Плюсы:</h3>
+				<ul  contenteditable="true" class="plus-minus__ul">
+					<textarea class="size" type="text" name="plus" placeholder="Плюсы"></textarea>
+				</ul>
 			</div>
-			<div class="column">
-				<p>Установите ссылку видеоплеера</p>
-				<input class="column__file" type = "text"  name="loadPlayerLink" >
+			<div class="plus-minus__element">
+				<h3 class="plus-minus__title">Минусы:</h3>
+				<ul  contenteditable="true" class="plus-minus__ul">
+					<textarea class="size" type="text" name="minus" placeholder="Минусы"></textarea>
+				</ul>
 			</div>
 		</div>
-		<p>дата выхода</p>
-		<input class="column__input" type="date" name="data">
-	
-		<p>длительность в минутах</p>
-		<input class="column__input" type="number" name="time"></br></br></br>
-	
-		<button class="column__button" id="buton" name="submit" type="submit">Добавить</button>
-	</div>
-	
-</div>';
+		<div class="level">
+			<div class="level__element">
+				<h3 class="level__title">Уровень вашего дохода:</h3>
+				<div class="type">
+					<select class="type__select" name="hard">
+						<option>Выбирите сложность</option>
+						<option>Легко</option>
+						<option>Нормально</option>
+						<option>Сложно</option>
+					</select>
+				</div>
+			</div>
+			<div class="level__element">
+				<h3 class="level__title">Сложность получения прибыли:</h3>
+				<div class="type">
+						<select class="type__select" name="money">
+							<option>Выбирите доходность</option>
+							<option>Низкая</option>
+							<option>Средняя</option>
+							<option>Высокая</option>
+						</select>
+					</div>
+			</div>
+		</div>
+		<div class="state">
+			<textarea class="state-text" type="text" name="two-text" placeholder="Второй текст статьи"></textarea>
+		</div>
+		<center>
+			<div class="date">
+				<input type="text" class="date__element date__link" name="rang" placeholder="ссылка на отзывы(если есть)">
+				<input class="date__element number" type="date" name="date"/>
+			</div>
+			<button name="submit">go</button>
+		</center>
+	</section>';
 				exit();
 	}else{
 			echo'
@@ -218,98 +253,125 @@ if (isset($_POST['submit'])){
 	}
 	}if($session == 1){ 
 		
-			echo ' <center>
-	<h2>Добро пожаловать на KINgaroo admin.</h2>
-	<p>
-		Здесь вы можете добавить фильм на сайт KINgaroo.</br>
-		Заполните все поля что бы добавить фильм на сайт!
-	</p>
-</center>
-<div class="center">
-	<div class="column">
-		<p>название фильма</p>
-		<input class="column__input" type="text" name="name">
-		<p>Укажите жанр фильма страну его выпуска</p>
-		<div class="row">
+			echo '<section class="container">
+		<div class="text katalog-text">
+			<center>
+				<input class="text__input" type="text" name="name" placeholder="Введите имя файла"/></br></br>
+				<input class="text__input" type="text" name="braus-title" placeholder="Введите заголовок для браузера"/></br></br>
+				<input class="text__input" type="text" name="braus-descript" placeholder="Введите description для браузера"/></br></br>
+				<input class="text__input" type="text" name="katalog-descript" placeholder="Введите description для каталога"/></br></br>
+				<input class="text__input" type="text" name="katalog-title" placeholder="Введите заголовок для каталога"/></br></br>
+				<input class="text__input" type="text" name="one-title" placeholder="Введите заголовок"/>
+				<div class="categories">
+					<h2 class="categories__title">Категории заработка</h2>
+					<div class="categories__block">
+						<div class="categories__element">
+							<input type="checkbox" name="newUser">
+							<span>Для новичков</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="passiv">
+							<span>Пассивный</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="site">	
+							<span>На сайте</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="arbit">
+							<span>Арбитраж трафика</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="freelance">
+							<span>Фриланс</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="mob">
+							<span>На моб. приложениях</span>
+						</div>
+					</div>
+				</div>
+			</center>
+		</div>
+		<div class="previe" style="background-image:url(./img/leadbit.png)">
+			<p>Установите превью статьи:</p>
+			<input type="file" name="loadImg" id="imgFile"/>
+		</div>
+		<div class="text katalog-text">
+			<center>
+				<input class="text__title" type="text" name="two-title" placeholder="Введите заголовок"/></br></br>
+				<input type="text"name="partner"placeholder="Ссылка на регистрацию"/>
+			</center>
+		</div>
+		<div class="state">
+			<div class="type">
+				<p class="type__text">Вид заработка:</p>
+				<select class="type__select" name="type">
+					<option>Выбирите вид заработка</option>
+					<option>Социальные сети</option>
+					<option>Партнерские программы</option>
+					<option>Написание отзывов</option>
+					<option>Создание сайтов</option>
+					<option>Просмотр рекламы</option>
+					<option>Криптавалюта</option>
+					<option>Прохождение опросов</option>
+					<option>С вложениями</option>
+					<option>Без вложений</option>
+					<option>Другие виды заработка</option>
+				</select>
+			</div>
 			
-			<select  name="janr" class="row__selsect">
-				<option>Жанры</option>
-				<option>комедия</option>
-				<option>триллер</option>
-				<option>боевик</option>
-				<option>мелодрамма</option>
-				<option>криминал</option>
-				<option>драма</option>
-				<option>ужасы</option>
-				<option>приключения</option>
-				<option>семейные</option>
-				<option>фантастика</option>
-				<option>документальный</option>
-				<option>военный</option>
-				<option>исторический</option>
-				<option>биография</option>
-				<option>вестерн</option>
-				<option>мкльтфильм</option>
-				<option>детектив</option>
-				<option>аниме</option>
-			</select>
-			<select  name="strana" class="row__selsect">
-				<option>Страны</option>
-				<option>США</option>
-				<option>СССР</option>
-				<option>Франция</option>
-				<option>Великобритания</option>
-				<option>Беларусь</option>
-				<option>Россия</option>
-				<option>Германия</option>
-				<option>Гонконг</option>
-				<option>Индия</option>
-				<option>Испания</option>
-				<option>Италия</option>
-				<option>Казахстан</option>
-				<option>Канада</option>
-				<option>Украина</option>
-				<option>Япония</option>
-				<option>Австралия</option>
-				<option>Бельгия</option>
-				<option>Польша</option>
-				<option>Китай</option>
-				<option>Швеция</option>
-				<option>Дания</option>
-				<option>Южная Корея</option>
-				<option>Австрия</option>
-				<option>Израиль</option>
-				<option>Турция</option>
-				<option>Колумбия</option>
-				<option>Швейцария</option>
-				<option>другое...</option>
-			</select>
+			<textarea class="state-text" type="text" name="one-text" placeholder="первый текст статьи"></textarea>
 		</div>
-		<p>описание</p>
-		<textarea class="column__textearea" name="description" placeholder = "Количество символов не должно превышать 1150..."></textarea>
-		
-		<p>рейтинг фильма от 0 до 10 по IMDb</p>
-		<input class="column__input" type="number" name="rang" step="any" >
-		<div class="row">
-			<div class="column">
-				<p>установите заставку фильма</p>
-				<input class="column__file" type="file" name="loadImg" id="imgFile"/>
+		<div class="plus-minus">
+			<div class="plus-minus__element">
+				<h3 class="plus-minus__title">Плюсы:</h3>
+				<ul  contenteditable="true" class="plus-minus__ul">
+					<textarea class="size" type="text" name="plus" placeholder="Плюсы"></textarea>
+				</ul>
 			</div>
-			<div class="column">
-				<p>Установите ссылку видеоплеера</p>
-				<input class="column__file" type = "text"  name="loadPlayerLink" >
+			<div class="plus-minus__element">
+				<h3 class="plus-minus__title">Минусы:</h3>
+				<ul  contenteditable="true" class="plus-minus__ul">
+					<textarea class="size" type="text" name="minus" placeholder="Минусы"></textarea>
+				</ul>
 			</div>
 		</div>
-		<p>дата выхода</p>
-		<input class="column__input" type="date" name="data">
-	
-		<p>длительность в минутах</p>
-		<input class="column__input" type="number" name="time"></br></br></br>
-	
-		<button class="column__button" id="buton" name="submit" type="submit">Добавить</button>
-	</div>
-	
-</div>';
+		<div class="level">
+			<div class="level__element">
+				<h3 class="level__title">Уровень вашего дохода:</h3>
+				<div class="type">
+					<select class="type__select" name="hard">
+						<option>Выбирите сложность</option>
+						<option>Легко</option>
+						<option>Нормально</option>
+						<option>Сложно</option>
+					</select>
+				</div>
+			</div>
+			<div class="level__element">
+				<h3 class="level__title">Сложность получения прибыли:</h3>
+				<div class="type">
+						<select class="type__select" name="money">
+							<option>Выбирите доходность</option>
+							<option>Низкая</option>
+							<option>Средняя</option>
+							<option>Высокая</option>
+						</select>
+					</div>
+			</div>
+		</div>
+		<div class="state">
+			<textarea class="state-text" type="text" name="two-text" placeholder="Второй текст статьи"></textarea>
+		</div>
+		<center>
+			<div class="date">
+				<input type="text" class="date__element date__link" name="rang" placeholder="ссылка на отзывы(если есть)">
+				<input class="date__element number" type="date" name="date"/>
+			</div>
+			<button name="submit">go</button>
+		</center>
+	</section>';
 	exit();}
 
 ?>	

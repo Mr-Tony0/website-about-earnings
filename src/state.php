@@ -1,3 +1,28 @@
+<?php
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(0);
+$conect = mysqli_connect('localhost','root','','posting');
+$sql = mysqli_query($conect, 'SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob` FROM `post` ORDER BY id DESC LIMIT 1');
+$result = mysqli_fetch_array($sql);
+$name = $result['name'];
+
+
+$file = "./post/".$name.".php"; // Путь к новому файлу
+$html = file_get_contents('./state.php'); // Содержимое
+$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
+fwrite($handle,$html); // Записать содержимое в дескриптор
+fclose($handle); // Закрыть файл
+
+
+
+$path_parts = pathinfo($_SERVER['SCRIPT_NAME']);
+$nameFile = $path_parts['filename'];
+$search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob` FROM `post` WHERE `name`= '$nameFile'");
+$resultSearch =mysqli_fetch_array($search);
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +34,7 @@
 	
 </head>
 <body>
-<!--<form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">-->
+<form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
@@ -42,7 +67,7 @@
 	<section class="container">
 		<div class="text katalog-text">
 			<center>
-				<h1 class="text__title">(Заголовок из ся)</h1>
+				<h1 class="text__title"><?php echo $resultSearch['one-title-page']; ?></h1>
 				<div class="categories">
 					<button class="categories__button">Для новичков</button>
 					<button class="categories__button">Пассивный</button>
@@ -50,89 +75,56 @@
 				</div>
 			</center>
 		</div>
-		<div class="previe" style="background-image:url(./img/leadbit.png)">
+		<div class="previe" id="image">
 		</div>
 		<div class="text katalog-text">
 			<center>
-				<h2 class="text__title">(Заголовок из ся h2)</h2>
-				<button class="go">Регистрация</button>
+				<h2 class="text__title"><?php echo $resultSearch['two-title-page']; ?></h2>
+				
+					<a href="<?php echo $resultSearch['linkPartner']; ?>"><div class="go" name="go">Регистрация</div></a>
+				
 			</center>
 		</div>
 		<div class="state">
-			<p><strong>Вид заработка: Социальные сети</strong></p>
+			<p><strong>Вид заработка: <?php echo $resultSearch['type']; ?></strong></p>
 			<p>
-				Идейные соображения высшего порядка, а также укрепление и развитие структуры 
-				в значительной степени обуславливает создание форм развития. Разнообразный и богатый
-				опыт постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому
-				кругу (специалистов) участие в формировании новых предложений. Повседневная практика показывает, что
-				дальнейшее развитие различных форм деятельности требуют определения и уточнения существенных финансовых и 
-				административных условий. Не следует, однако забывать, что укрепление и развитие структуры представляет собой
-				интересный эксперимент проверки форм развития. Таким образом новая модель организационной деятельности влечет
-				за собой процесс внедрения и модернизации форм развития.
-			</p>
-			<p>
-				Идейные соображения высшего порядка, а также реализация намеченных плановых
-				заданий представляет собой интересный эксперимент проверки направлений прогрессивного развития.
-				Не следует, однако забывать, что сложившаяся структура организации требуют от нас анализа существенных финансовых 
-				и административных условий. Таким образом новая модель организационной деятельности требуют от нас анализа форм развития.
+				 <?php echo $resultSearch['one-text']; ?>
 			</p>
 		</div>
 		<div class="plus-minus">
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Плюсы:</h3>
 				<ul class="plus-minus__ul">
-					<li>Первый пункт</li>
-					<li>Второй пункт</li>
-					<li>Третий пункт</li>
-					<li>Первый пункт</li>
-					<li>Второй пункт</li>
-					<li>Третий пункт</li>
+					 <?php echo $resultSearch['plus']; ?>
 				</ul>
 			</div>
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Минусы:</h3>
 				<ul class="plus-minus__ul">
-					<li>Первый пункт</li>
-					<li>Второй пункт</li>
-					<li>Третий пункт</li>
-					<li>Первый пункт</li>
-					<li>Второй пункт</li>
-					<li>Третий пункт</li>
+					<?php echo $resultSearch['minus']; ?>
 				</ul>
 			</div>
 		</div>
 		<div class="level">
 			<div class="level__element">
 				<h3 class="level__title">Уровень вашего дохода:</h3>
-				<p class="level__text">Средний</p>
+				<p class="level__text"><?php echo $resultSearch['money-level']; ?></p>
 			</div>
 			<div class="level__element">
 				<h3 class="level__title">Сложность получения прибыли:</h3>
-				<p class="level__text">Средний</p>
+				<p class="level__text"><?php echo $resultSearch['hard-level']; ?></p>
 			</div>
 		</div>
 		<div class="state">
 			<p>
-				Идейные соображения высшего порядка, а также укрепление и развитие структуры 
-				в значительной степени обуславливает создание форм развития. Разнообразный и богатый
-				опыт постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому
-				кругу (специалистов) участие в формировании новых предложений. Повседневная практика показывает, что
-				дальнейшее развитие различных форм деятельности требуют определения и уточнения существенных финансовых и 
-				административных условий. Не следует, однако забывать, что укрепление и развитие структуры представляет собой
-				интересный эксперимент проверки форм развития. Таким образом новая модель организационной деятельности влечет
-				за собой процесс внедрения и модернизации форм развития.
+				<?php echo $resultSearch['two-text']; ?>
 			</p>
-			<p>
-				Идейные соображения высшего порядка, а также реализация намеченных плановых
-				заданий представляет собой интересный эксперимент проверки направлений прогрессивного развития.
-				Не следует, однако забывать, что сложившаяся структура организации требуют от нас анализа существенных финансовых 
-				и административных условий. Таким образом новая модель организационной деятельности требуют от нас анализа форм развития.
-			</p>
+			
 		</div>
 		<center>
 			<div class="date">
-				<p class="date__element rang">Отзывы</p>
-				<p class="date__element number">04.12.17</p>
+				<a href="<?php echo $resultSearch['coments']; ?>"><p class="date__element rang">Отзывы</p></a>
+				<p class="date__element number"><?php echo $resultSearch['date']; ?></p>
 			</div>
 		</center>
 	</section>
@@ -168,10 +160,17 @@
 			<p class="footer__text mini-text">BigMoney © Все права защищены</p>
 		</div>
 	</footer>
-<!--</form>-->
+</form>
 
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/mobile.js"></script>
-
+<script>
+	var imgId = document.getElementById('image');
+	var img = '<?php echo '.'.$resultSearch['image']; ?>';
+	imgId.style.backgroundImage = 'url('+img+')';
+	imgId.style.backgroundSize = '100% 100%';
+	imgId.style.backgroundRepeat = 'no-repeat';
+	imgId.style.backgroundPosition = 'center';
+</script>
 </body>
 </html>
