@@ -17,10 +17,10 @@
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="soft.php">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="keys.php">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="new.php">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="./post/index.php">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="./soft/index.php">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="./keys/index.php">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="./news/index.php">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="./post/index.php">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="./soft/index.php">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="./keys/index.php">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="./news/index.php">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">
@@ -115,7 +115,7 @@
 		<div class="bottom">
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/mobil.png')" >
-				<a href="#"><div class="bottom__hover">
+				<a href="./post/mobilnye-prilozheniya/index.php"><div class="bottom__hover">
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
@@ -123,7 +123,7 @@
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/site.png')" >
-				<a href="#"><div class="bottom__hover">
+				<a href="./post/site/index.php"><div class="bottom__hover">
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
@@ -131,7 +131,7 @@
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/freelance.png')" >
-				<a href="#"><div class="bottom__hover">
+				<a href="./post/freelance/index.php"><div class="bottom__hover">
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
@@ -139,7 +139,7 @@
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/start.png')" >
-				<a href="#"><div class="bottom__hover">
+				<a href="./post/dlya-novichkov/index.php"><div class="bottom__hover">
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
@@ -147,7 +147,7 @@
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/arbit.png')" >
-				<a href="#"><div class="bottom__hover">
+				<a href="./post/arbitraj/index.php"><div class="bottom__hover">
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
@@ -155,7 +155,7 @@
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/passiv.png')" >
-				<a href="#"><div class="bottom__hover">
+				<a href="./post/passivnyj/index.php"><div class="bottom__hover">
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>

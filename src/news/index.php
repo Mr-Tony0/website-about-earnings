@@ -13,14 +13,14 @@
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="index.php"><img class="logo__img" src="./img/logo.png" alt=""></a>
+				<a href="../index.php"><img class="logo__img" src="./img/logo.png" alt=""></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="soft.php">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="keys.php">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="new.php">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../post/index.php">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../soft/index.php">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../keys/index.php">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../news/index.php">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="katalog.php">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="../post/index.php">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="../soft/index.php">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="../keys/index.php">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="../news/index.php">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">

@@ -133,15 +133,15 @@ if (isset($_POST['submit'])){
 					<div class="categories__block">
 						<div class="categories__element">
 							<input type="checkbox" name="newUser">
-							<span>Для новичков</span>
+							<span>Заработок для новичков</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="passiv">
-							<span>Пассивный</span>
+							<span>Пассивный заработок</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="site">	
-							<span>На сайте</span>
+							<span>Заработок на сайте</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="arbit">
@@ -153,13 +153,13 @@ if (isset($_POST['submit'])){
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="mob">
-							<span>На моб. приложениях</span>
+							<span>Заработок на моб. приложениях</span>
 						</div>
 					</div>
 				</div>
 			</center>
 		</div>
-		<div class="previe" style="background-image:url(./img/leadbit.png)">
+		<div class="previe">
 			<p>Установите превью статьи:</p>
 			<input type="file" name="loadImg" id="imgFile"/>
 		</div>
@@ -237,7 +237,11 @@ if (isset($_POST['submit'])){
 			</div>
 			<button name="submit">go</button>
 		</center>
-	</section>';
+	</section>
+	<script src="./js/jquery-3.3.1.js"></script>
+	<script src="./js/checkbox.js"></script>
+
+	';
 				exit();
 	}else{
 			echo'
@@ -267,15 +271,15 @@ if (isset($_POST['submit'])){
 					<div class="categories__block">
 						<div class="categories__element">
 							<input type="checkbox" name="newUser">
-							<span>Для новичков</span>
+							<span>Заработок для новичков</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="passiv">
-							<span>Пассивный</span>
+							<span>Пассивный заработок</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="site">	
-							<span>На сайте</span>
+							<span>Заработок на сайте</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="arbit">
@@ -287,13 +291,13 @@ if (isset($_POST['submit'])){
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="mob">
-							<span>На моб. приложениях</span>
+							<span>Заработок на моб. приложениях</span>
 						</div>
 					</div>
 				</div>
 			</center>
 		</div>
-		<div class="previe" style="background-image:url(./img/leadbit.png)">
+		<div class="previe">
 			<p>Установите превью статьи:</p>
 			<input type="file" name="loadImg" id="imgFile"/>
 		</div>
@@ -371,11 +375,16 @@ if (isset($_POST['submit'])){
 			</div>
 			<button name="submit">go</button>
 		</center>
-	</section>';
+	</section>
+	<script src="./js/jquery-3.3.1.js"></script>
+	<script src="./js/checkbox.js"></script>
+
+	';
 	exit();}
 
 ?>	
 </center>
 </form>
+
 </body>
 </html>

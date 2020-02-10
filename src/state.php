@@ -8,11 +8,49 @@ $result = mysqli_fetch_array($sql);
 $name = $result['name'];
 
 
-$file = "./post/".$name.".php"; // Путь к новому файлу
-$html = file_get_contents('./state.php'); // Содержимое
-$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
-fwrite($handle,$html); // Записать содержимое в дескриптор
-fclose($handle); // Закрыть файл
+if($result['site'] == 'on'){
+	$file = "./post/site/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
+	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
+	fwrite($handle,$html); // Записать содержимое в дескриптор
+	fclose($handle); // Закрыть файл
+}
+if($result['freelance'] == 'on'){
+	$file = "./post/freelance/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
+	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
+	fwrite($handle,$html); // Записать содержимое в дескриптор
+	fclose($handle); // Закрыть файл
+}
+if($result['arbit'] == 'on'){
+	$file = "./post/arbitraj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
+	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
+	fwrite($handle,$html); // Записать содержимое в дескриптор
+	fclose($handle); // Закрыть файл
+}
+if($result['newUser'] == 'on'){
+	echo $name;
+	$file = "./post/dlya-novichkov/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
+	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
+	fwrite($handle,$html); // Записать содержимое в дескриптор
+	fclose($handle); // Закрыть файл
+}
+if($result['passiv'] == 'on'){
+	$file = "./post/passivnyj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
+	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
+	fwrite($handle,$html); // Записать содержимое в дескриптор
+	fclose($handle); // Закрыть файл
+}
+if($result['mob'] == 'on'){
+	$file = "./post/mobilnye-prilozheniya/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
+	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
+	fwrite($handle,$html); // Записать содержимое в дескриптор
+	fclose($handle); // Закрыть файл
+}			
 
 
 
@@ -21,15 +59,14 @@ $nameFile = $path_parts['filename'];
 $search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob` FROM `post` WHERE `name`= '$nameFile'");
 $resultSearch =mysqli_fetch_array($search);
 
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>work</title>
 	<meta charset = "utf-8">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<link rel="stylesheet" type="text/css" href="./css/modification.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/modification.css">
 	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
 	
 </head>
@@ -38,7 +75,7 @@ $resultSearch =mysqli_fetch_array($search);
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="index.php"><img class="logo__img" src="./img/logo.png" alt=""></a>
+				<a href="index.php"><img class="logo__img" src="../img/logo.png" alt=""></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
@@ -69,9 +106,26 @@ $resultSearch =mysqli_fetch_array($search);
 			<center>
 				<h1 class="text__title"><?php echo $resultSearch['one-title-page']; ?></h1>
 				<div class="categories">
-					<button class="categories__button">Для новичков</button>
-					<button class="categories__button">Пассивный</button>
-					<button class="categories__button">Арбитраж трафика</button>
+					<?php
+						if($resultSearch['site'] == 'on'){
+							echo '	<div class="categories__button">Заработок на сайте</div>';
+						}
+						if($resultSearch['freelance'] == 'on'){
+							echo '<div class="categories__button">Фриланс</div>';
+						}
+						if($resultSearch['arbit'] == 'on'){
+							echo '<div class="categories__button">Арбитраж трафика</div>';
+						}
+						if($resultSearch['newUser'] == 'on'){
+							echo '<div class="categories__button">Заработок для новичков</div>';
+						}
+						if($resultSearch['passiv'] == 'on'){
+							echo '<div class="categories__button">Пассивный заработок</div>';
+						}
+						if($resultSearch['mob'] == 'on'){
+							echo '<div class="categories__button">Заработок на моб. приложениях</div>';
+						}
+					?>
 				</div>
 			</center>
 		</div>
@@ -147,9 +201,9 @@ $resultSearch =mysqli_fetch_array($search);
 			</div>
 			<div class = "footer__element">
 				<h2 class="footer__text">Контакты</h2>
-				<img class="footer__img"src="./img/facebook.svg">
-				<img class="footer__img"src="./img/telegram.svg">
-				<img class="footer__img"src="./img/vk.svg">
+				<img class="footer__img"src="../img/facebook.svg">
+				<img class="footer__img"src="../img/telegram.svg">
+				<img class="footer__img"src="../img/vk.svg">
 			</div>
 			<div class = "footer__element">
 				<h2 class="footer__text">Поддержка</h2>
@@ -162,11 +216,12 @@ $resultSearch =mysqli_fetch_array($search);
 	</footer>
 </form>
 
-<script src="./js/jquery-3.3.1.js"></script>
-<script src="./js/mobile.js"></script>
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/mobile.js"></script>
 <script>
 	var imgId = document.getElementById('image');
-	var img = '<?php echo '.'.$resultSearch['image']; ?>';
+	var img = '<?php echo $resultSearch['image']; ?>';
+	var img = img.replace("/post",".");
 	imgId.style.backgroundImage = 'url('+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';
