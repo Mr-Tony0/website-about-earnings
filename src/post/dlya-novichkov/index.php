@@ -9,7 +9,7 @@
 	
 </head>
 <body>
-<!--<form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">-->
+<form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
@@ -75,11 +75,10 @@
 				</a>
 			</div>
 		</div>
-		</div>
 		<div class="filter">
 			<div class="type">
 				<p class="type__text">Вид заработка:</p>
-				<select class="type__select">
+				<select class="type__select" name="type">
 					<option>Выбирите вид заработка</option>
 					<option>Социальные сети</option>
 					<option>Партнерские программы</option>
@@ -95,7 +94,7 @@
 			</div>
 			<div class="type">
 				<p class="type__text">Сложность:</p>
-				<select class="type__select">
+				<select class="type__select" name="hard">
 					<option>Выбирите сложность</option>
 					<option>Легко</option>
 					<option>Нормально</option>
@@ -104,7 +103,7 @@
 			</div>
 			<div class="type">
 				<p class="type__text">Доход:</p>
-				<select class="type__select">
+				<select class="type__select" name="money">
 					<option>Выбирите доходность</option>
 					<option>Низкая</option>
 					<option>Средняя</option>
@@ -112,25 +111,58 @@
 				</select>
 			</div>
 		</div>
-		<button class="go">Применить</button>
+		<button class="go" name="go">Применить</button>
 		<div class="content">
 		
 			<?php
 				$conect = mysqli_connect('localhost','root','','posting');
-				$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` WHERE `newUser` = 'on'");
+				if(isset($_POST['go'])){
+				$hard= mysqli_real_escape_string($conect, trim($_POST['hard']));
+				$money= mysqli_real_escape_string($conect, trim($_POST['money']));
+				$type = mysqli_real_escape_string($conect, trim($_POST['type']));
+				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `post` WHERE `newUser` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
 						$img = str_replace("/post","",$result_state['image']);
-						echo '<a href="./'.$result_state['name'].'.php">
+						if(($result_state['type'] == $type && $hard == 'Выбирите сложность' && $money == 'Выбирите доходность') || ($result_state['type'] == $type && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($result_state['type'] == $type && $hard == $result_state['hard-level']) || ($result_state['type'] == $type && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == 'Выбирите доходность') || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == 'Выбирите сложность' && $money == $result_state['money-level']) ){										
+							echo 
+								'<a href="./'.$result_state['name'].'.php">
 								<div class="content__element">
 									<div class="content__img" id="imag" style="background-image:url(.'.$img.')"></div>
+										<div class="content__text">
+											<h2 class="content__title">'.$result_state['title-katalog'].'</h2>
+											<p class="content__descript">'.$result_state['description-katalog'].'</p>
+										</div>
+									</div>
+									</a>';
+						}if($money == 'Выбирите доходность' && $hard == 'Выбирите сложность' && $type == 'Выбирите вид заработка'){
+							echo 
+								'<a href="./'.$result_state['name'].'.php">
+								<div class="content__element">
+									<div class="content__img" style="background-image:url(.'.$img.')"></div>
 									<div class="content__text">
 										<h2 class="content__title">'.$result_state['title-katalog'].'</h2>
 										<p class="content__descript">'.$result_state['description-katalog'].'</p>
 									</div>
 								</div>
-								</a>
-								';
+								</a>';
+						}
 					}
+				}else{
+					$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `post` WHERE `newUser` = 'on'");
+					while ($result_state  = mysqli_fetch_array($state)){
+					$img = str_replace("/post","",$result_state['image']);
+					echo 
+						'<a href="./'.$result_state['name'].'.php">
+						<div class="content__element">
+							<div class="content__img" style="background-image:url(.'.$img.')"></div>
+							<div class="content__text">
+								<h2 class="content__title">'.$result_state['title-katalog'].'</h2>
+								<p class="content__descript">'.$result_state['description-katalog'].'</p>
+							</div>
+						</div>
+						</a>';
+					}
+				}
 						
 			?>
 		</div>
@@ -168,7 +200,7 @@
 			<p class="footer__text mini-text">BigMoney © Все права защищены</p>
 		</div>
 	</footer>
-<!--</form>-->
+</form>
 
 <script src="../js/jquery-3.3.1.js"></script>
 <script src="../js/mobile.js"></script>

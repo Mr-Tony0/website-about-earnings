@@ -5,8 +5,18 @@ $conect = mysqli_connect('localhost','root','','posting');
 
 if (isset($_POST['submit'])){	
 	$session = 1;
-	
-	$uploadImg = './post/img/';
+	$post =  mysqli_real_escape_string($conect, trim($_POST['post']));
+	$soft =  mysqli_real_escape_string($conect, trim($_POST['soft']));
+	if($soft = 'on'){
+		$table = 'soft';
+		$direct = 'soft';
+		$link = 'soft.php';
+	}else{
+		$table = 'post';
+		$direct = 'post';
+		$link = 'state.php';
+	}
+	$uploadImg = './'.$direct.'/img/';
 	$apendImg=date('YmdHis').rand(100,1000).'.jpg'; 
 	$uploadfile1 = "$uploadImg$apendImg";
 	if(($_FILES['loadImg']['type'] == 'image/gif' || $_FILES['loadImg']['type'] == 'image/jpeg' || $_FILES['loadImg']['type'] == 'image/png') && ($_FILES['loadImg']['size'] != 0 and $_FILES['loadImg']['size']<=1512000)){ 
@@ -49,17 +59,33 @@ if (isset($_POST['submit'])){
 	$twoText= mysqli_real_escape_string($conect, trim($_POST['two-text']));
 	$rang= mysqli_real_escape_string($conect, trim($_POST['rang']));
 	$date= mysqli_real_escape_string($conect, trim($_POST['date']));
+	$braus= mysqli_real_escape_string($conect, trim($_POST['braus']));
+	$textWork= mysqli_real_escape_string($conect, trim($_POST['textWork']));
+	$host= mysqli_real_escape_string($conect, trim($_POST['host']));
+	$vpn= mysqli_real_escape_string($conect, trim($_POST['vpn']));
+	$proxy= mysqli_real_escape_string($conect, trim($_POST['proxy']));
+	$pay= mysqli_real_escape_string($conect, trim($_POST['pay']));
 	$loadImg = $uploadfile1;
+	
 	if(!empty($brausTtitle) and !empty($brausDescript) and !empty($name) and !empty($katalogTtitle) and !empty($onePageTitle) and !empty($partner) and !empty($type) and !empty($oneText) and !empty($hard) and !empty($money) and !empty($loadImg) /*and strlen($brausTtitle)<2139*/){
-		$query ="SELECT * FROM `post` WHERE linkPartner = '$partner' AND name = '$name'";
+		$query ="SELECT * FROM `".$table."` WHERE linkPartner = '$partner' AND name = '$name'";
 		$data = mysqli_query($conect, $query);
 		if(mysqli_num_rows($data) == 0 ){
-			$query ="INSERT INTO`post`(`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$oneText', '$twoText', '$loadImg','$partner', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$site', '$freelance', '$arbit', '$type', '$newUser', '$passiv', '$mob')";
-			mysqli_query($conect, $query);
-			//echo'фильм добавлен';
-			mysqli_close($conect);
-			header ('Location: state.php');
-			exit();
+			if($table == 'soft'){
+				$querySoft ="INSERT INTO `".$table."` (`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `date`, `coments`, `textWork`, `host`, `proxy`, `vpn`, `pay`, `brous`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$oneText', '$twoText', '$loadImg','$partner', '$plus', '$minus', '$date', '$rang', '$textWork', '$host', '$proxy', '$vpn', '$pay', '$braus')";
+				mysqli_query($conect, $querySoft);
+				//echo'фильм добавлен';
+				mysqli_close($conect);
+				header ('Location: '.$link.'');
+				exit();
+			}if($table == 'soft'){
+				$queryPost ="INSERT INTO `".$table."` (`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$oneText', '$twoText', '$loadImg','$partner', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$site', '$freelance', '$arbit', '$type', '$newUser', '$passiv', '$mob')";
+				mysqli_query($conect, $queryPost);
+				//echo'фильм добавлен';
+				mysqli_close($conect);
+				header ('Location: '.$link.'');
+				exit();
+			}
 		}
 		else{
 			if(mysqli_num_rows($data) != 0){
@@ -122,13 +148,23 @@ if (isset($_POST['submit'])){
 			echo '<section class="container">
 		<div class="text katalog-text">
 			<center>
+				<div class="categories__block">
+					<div class="categories__element">
+						<input type="checkbox" name="post" id = "post">
+						<span>Описание заработка</span>
+					</div>
+					<div class="categories__element">
+						<input type="checkbox" name="soft" id = "soft">
+						<span>Описание софта</span>
+					</div>
+				</div>
 				<input class="text__input" type="text" name="name" placeholder="Введите имя файла"/></br></br>
 				<input class="text__input" type="text" name="braus-title" placeholder="Введите заголовок для браузера"/></br></br>
 				<input class="text__input" type="text" name="braus-descript" placeholder="Введите description для браузера"/></br></br>
 				<input class="text__input" type="text" name="katalog-descript" placeholder="Введите description для каталога"/></br></br>
 				<input class="text__input" type="text" name="katalog-title" placeholder="Введите заголовок для каталога"/></br></br>
 				<input class="text__input" type="text" name="one-title" placeholder="Введите заголовок"/>
-				<div class="categories">
+				<div class="categories" id="one">
 					<h2 class="categories__title">Категории заработка</h2>
 					<div class="categories__block">
 						<div class="categories__element">
@@ -154,6 +190,35 @@ if (isset($_POST['submit'])){
 						<div class="categories__element">
 							<input type="checkbox" name="mob">
 							<span>Заработок на моб. приложениях</span>
+						</div>
+					</div>
+				</div>
+				<div class="categories" id="two">
+					<h2 class="categories__title">Категории сервиса</h2>
+					<div class="categories__block">
+						<div class="categories__element">
+							<input type="checkbox" name="braus">
+							<span>Браузеры</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="textWork">
+							<span>Работа с текстом</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="host">	
+							<span>Хостинг</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="vpn">
+							<span>VPN</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="proxy">
+							<span>Proxy</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="pay">
+							<span>Платежные системы</span>
 						</div>
 					</div>
 				</div>
@@ -240,7 +305,7 @@ if (isset($_POST['submit'])){
 	</section>
 	<script src="./js/jquery-3.3.1.js"></script>
 	<script src="./js/checkbox.js"></script>
-
+	<script src="./js/admin.js"></script>
 	';
 				exit();
 	}else{
@@ -260,13 +325,23 @@ if (isset($_POST['submit'])){
 			echo '<section class="container">
 		<div class="text katalog-text">
 			<center>
+				<div class="categories__block">
+					<div class="categories__element">
+						<input type="checkbox" name="post" id = "post">
+						<span>Описание заработка</span>
+					</div>
+					<div class="categories__element">
+						<input type="checkbox" name="soft" id = "soft">
+						<span>Описание софта</span>
+					</div>
+				</div>
 				<input class="text__input" type="text" name="name" placeholder="Введите имя файла"/></br></br>
 				<input class="text__input" type="text" name="braus-title" placeholder="Введите заголовок для браузера"/></br></br>
 				<input class="text__input" type="text" name="braus-descript" placeholder="Введите description для браузера"/></br></br>
 				<input class="text__input" type="text" name="katalog-descript" placeholder="Введите description для каталога"/></br></br>
 				<input class="text__input" type="text" name="katalog-title" placeholder="Введите заголовок для каталога"/></br></br>
 				<input class="text__input" type="text" name="one-title" placeholder="Введите заголовок"/>
-				<div class="categories">
+				<div class="categories" id="one">
 					<h2 class="categories__title">Категории заработка</h2>
 					<div class="categories__block">
 						<div class="categories__element">
@@ -292,6 +367,35 @@ if (isset($_POST['submit'])){
 						<div class="categories__element">
 							<input type="checkbox" name="mob">
 							<span>Заработок на моб. приложениях</span>
+						</div>
+					</div>
+				</div>
+				<div class="categories" id="two">
+					<h2 class="categories__title">Категории сервиса</h2>
+					<div class="categories__block">
+						<div class="categories__element">
+							<input type="checkbox" name="braus">
+							<span>Браузеры</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="textWork">
+							<span>Работа с текстом</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="host">	
+							<span>Хостинг</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="vpn">
+							<span>VPN</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="proxy">
+							<span>Proxy</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="pay">
+							<span>Платежные системы</span>
 						</div>
 					</div>
 				</div>
@@ -378,13 +482,13 @@ if (isset($_POST['submit'])){
 	</section>
 	<script src="./js/jquery-3.3.1.js"></script>
 	<script src="./js/checkbox.js"></script>
-
+	<script src="./js/admin.js"></script>
 	';
 	exit();}
 
 ?>	
 </center>
 </form>
-
+<script src="./js/admin.js"></script>
 </body>
 </html>
