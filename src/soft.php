@@ -47,7 +47,7 @@ if($result['pay'] == 'on'){
 }
 if($result['brous'] == 'on'){
 	$file = "./soft/brauzery/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./state.php'); // Содержимое
+	$html = file_get_contents('./soft.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
@@ -81,7 +81,7 @@ $resultSearch =mysqli_fetch_array($search);
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="../index.php">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/post/index.php">Статьи о заработке</a></li>
 					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/index.php">Софт для заработка</a></li>
 					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
 					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/index.php">Новости</a></li>
@@ -97,7 +97,7 @@ $resultSearch =mysqli_fetch_array($search);
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="../index.php">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/post/index.php">Статьи о заработке</a></li>
 			<li class="navigation__li"><a class="navigation__link" href="/src/soft/index.php">Софт для заработка</a></li>
 			<li class="navigation__li"><a class="navigation__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
 			<li class="navigation__li"><a class="navigation__link" href="/src/news/index.php">Новости</a></li>
@@ -212,7 +212,7 @@ $resultSearch =mysqli_fetch_array($search);
 <script>
 	var imgId = document.getElementById('image');
 	var img = '<?php echo $resultSearch['image']; ?>';
-	var img = img.replace("/post",".");
+	var img = img.replace("./soft",".");
 	imgId.style.backgroundImage = 'url(.'+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';

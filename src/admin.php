@@ -7,15 +7,18 @@ if (isset($_POST['submit'])){
 	$session = 1;
 	$post =  mysqli_real_escape_string($conect, trim($_POST['post']));
 	$soft =  mysqli_real_escape_string($conect, trim($_POST['soft']));
-	if($soft = 'on'){
+	//echo $soft.'1';
+	//echo $post.'2';
+	if($soft == 'on'){
 		$table = 'soft';
 		$direct = 'soft';
 		$link = 'soft.php';
-	}else{
+	}if($post == 'on'){
 		$table = 'post';
 		$direct = 'post';
 		$link = 'state.php';
 	}
+	
 	$uploadImg = './'.$direct.'/img/';
 	$apendImg=date('YmdHis').rand(100,1000).'.jpg'; 
 	$uploadfile1 = "$uploadImg$apendImg";
@@ -78,7 +81,7 @@ if (isset($_POST['submit'])){
 				mysqli_close($conect);
 				header ('Location: '.$link.'');
 				exit();
-			}if($table == 'soft'){
+			}if($table == 'post'){
 				$queryPost ="INSERT INTO `".$table."` (`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$oneText', '$twoText', '$loadImg','$partner', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$site', '$freelance', '$arbit', '$type', '$newUser', '$passiv', '$mob')";
 				mysqli_query($conect, $queryPost);
 				//echo'фильм добавлен';
@@ -150,11 +153,11 @@ if (isset($_POST['submit'])){
 			<center>
 				<div class="categories__block">
 					<div class="categories__element">
-						<input type="checkbox" name="post" id = "post">
+						<input type="radio" name="post" id = "post">
 						<span>Описание заработка</span>
 					</div>
 					<div class="categories__element">
-						<input type="checkbox" name="soft" id = "soft">
+						<input type="radio" name="soft" id = "soft">
 						<span>Описание софта</span>
 					</div>
 				</div>
@@ -327,11 +330,11 @@ if (isset($_POST['submit'])){
 			<center>
 				<div class="categories__block">
 					<div class="categories__element">
-						<input type="checkbox" name="post" id = "post">
+						<input type="radio" name="post" id = "post">
 						<span>Описание заработка</span>
 					</div>
 					<div class="categories__element">
-						<input type="checkbox" name="soft" id = "soft">
+						<input type="radio" name="post soft" id = "soft">
 						<span>Описание софта</span>
 					</div>
 				</div>

@@ -3,8 +3,8 @@
 <head>
 	<title>work</title>
 	<meta charset = "utf-8">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<link rel="stylesheet" type="text/css" href="./css/modification.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/modification.css">
 	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
 	
 </head>
@@ -13,14 +13,14 @@
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="../index.php"><img class="logo__img" src="./img/logo.png" alt=""></a>
+				<a href="/src/index.php"><img class="logo__img" src="../img/logo.png" alt=""></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="../post/index.php">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="../soft/index.php">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="../keys/index.php">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="../news/index.php">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/post/index.php">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/index.php">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/index.php">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="../post/index.php">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="../soft/index.php">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="../keys/index.php">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="../news/index.php">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/post/index.php">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/soft/index.php">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/news/index.php">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">
@@ -55,58 +55,47 @@
 		<div class="categories">
 			<h2 class="categories__title">Категории программ для заработка</h2>
 			<div class="categories__flex">
-				<a href="./brauzery/">
+				<a href="../brauzery/">
 					<div class="categories__button">Браузеры</div>
 				</a>
-				<a href="./rabota-s-tekstom/">
+				<a href="../rabota-s-tekstom/">
 					<div class="categories__button">Работа с текстом</div>
 				</a>
-				<a href="./host/">
+				<a href="../host/">
 					<div class="categories__button">Хостинг</div>
 				</a>
-				<a href="./vpn/">
+				<a href="../vpn/">
 					<div class="categories__button">VPN</div>
 				</a>
-				<a href="./proxy/">
+				<a href="../proxy/">
 					<div class="categories__button">Proxy</div>
 				</a>
-				<a href="./platezhnye-sistemy/">
+				<a href="../platezhnye-sistemy/">
 					<div class="categories__button">Платежные системы</div>
 				</a>
 			</div>
 		</div>
+		
 		<div class="content">
+		
 			<?php
 				$conect = mysqli_connect('localhost','root','','posting');
-				$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `soft`");
+				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog` FROM `soft` WHERE `host` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
-						$array[0] = "brauzery";
-						$array[1] = "host";
-						$array[2] = "platezhnye-sistemy";
-						$array[3] = "proxy";
-						$array[4] = "rabota-s-tekstom";
-						$array[5] = "vpn";
-						for($a = 0; $a<=5; $a++){
-							$dir = './'.$array[$a].'/';
-							if($handle = opendir($dir)){
-								while(false !== ($file = readdir($handle))) {
-									if($file != "." && $file != ".." && $file == $result_state['name'].'.php'){
-										echo 
-										'<a href="./'.$array[$a].'/'.$result_state['name'].'.php">
-										<div class="content__element">
-											<div class="content__img" style="background-image:url(.'.$result_state['image'].')"></div>
-											<div class="content__text">
-												<h2 class="content__title">'.$result_state['title-katalog'].'</h2>
-												<p class="content__descript">'.$result_state['description-katalog'].'</p>
-											</div>
-										</div>
-										</a>';
-									}
-								}
-								
-							}
-						}
+					$img = str_replace("/soft","",$result_state['image']);
+					echo 
+						'<a href="./'.$result_state['name'].'.php">
+						<div class="content__element">
+							<div class="content__img" style="background-image:url(.'.$img.')"></div>
+							<div class="content__text">
+								<h2 class="content__title">'.$result_state['title-katalog'].'</h2>
+								<p class="content__descript">'.$result_state['description-katalog'].'</p>
+							</div>
+						</div>
+						</a>';
 					}
+				
+						
 			?>
 		</div>
 		</center>
@@ -130,9 +119,9 @@
 			</div>
 			<div class = "footer__element">
 				<h2 class="footer__text">Контакты</h2>
-				<img class="footer__img"src="./img/facebook.svg">
-				<img class="footer__img"src="./img/telegram.svg">
-				<img class="footer__img"src="./img/vk.svg">
+				<img class="footer__img"src="../img/facebook.svg">
+				<img class="footer__img"src="../img/telegram.svg">
+				<img class="footer__img"src="../img/vk.svg">
 			</div>
 			<div class = "footer__element">
 				<h2 class="footer__text">Поддержка</h2>
@@ -145,8 +134,7 @@
 	</footer>
 </form>
 
-<script src="./js/jquery-3.3.1.js"></script>
-<script src="./js/mobile.js"></script>
-
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/mobile.js"></script>
 </body>
 </html>
