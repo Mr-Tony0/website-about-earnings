@@ -11,6 +11,7 @@ $(soft).on('click',function(){
 	$('#two').show();
 	$('#free').hide();
 	$('.keys').hide();
+	$('#noKey').show();
 })
 $(post).on('click',function(){
 	$('#two').hide();
@@ -19,6 +20,7 @@ $(post).on('click',function(){
 	$('#one').show();
 	$('#free').hide();
 	$('.keys').hide();
+	$('#noKey').show();
 })
 $(keys).on('click',function(){
 	$('.type').show();
@@ -28,4 +30,5 @@ $(keys).on('click',function(){
 	$('#two').hide();
 	$('#free').show();
 	$('#link').hide();
+	$('#noKey').hide();
 })

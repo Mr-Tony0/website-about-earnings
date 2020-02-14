@@ -3,60 +3,47 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(0);
 $conect = mysqli_connect('localhost','root','','posting');
-$sql = mysqli_query($conect, 'SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob` FROM `post` ORDER BY id DESC LIMIT 1');
+$sql = mysqli_query($conect, 'SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `free-title-page`, `foo-title-page`, `one-text`, `two-text`, `free-text`, `foo-text`, `image`, `one-linkPartner`, `two-linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `arbit`, `type`, `newUser`, `passiv`, `soc` FROM `case` ORDER BY id DESC LIMIT 1');
 $result = mysqli_fetch_array($sql);
 $name = $result['name'];
 
 
 if($result['site'] == 'on'){
-	$file = "./post/site/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./state.php'); // Содержимое
+	$file = "./keys/arbitraj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
 if($result['freelance'] == 'on'){
-	$file = "./post/freelance/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./state.php'); // Содержимое
+	$file = "./keys/dlya-novichkov/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
 if($result['arbit'] == 'on'){
-	$file = "./post/arbitraj/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./state.php'); // Содержимое
+	$file = "./keys/passivnyj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
 if($result['newUser'] == 'on'){
 	echo $name;
-	$file = "./post/dlya-novichkov/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./state.php'); // Содержимое
+	$file = "./keys/socialnye-seti/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['passiv'] == 'on'){
-	$file = "./post/passivnyj/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./state.php'); // Содержимое
-	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
-	fwrite($handle,$html); // Записать содержимое в дескриптор
-	fclose($handle); // Закрыть файл
-}
-if($result['mob'] == 'on'){
-	$file = "./post/mobilnye-prilozheniya/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./state.php'); // Содержимое
-	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
-	fwrite($handle,$html); // Записать содержимое в дескриптор
-	fclose($handle); // Закрыть файл
-}			
+			
 
 
 
 $path_parts = pathinfo($_SERVER['SCRIPT_NAME']);
 $nameFile = $path_parts['filename'];
-$search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob` FROM `post` WHERE `name`= '$nameFile'");
+$search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `free-title-page`, `foo-title-page`, `one-text`, `two-text`, `free-text`, `foo-text`, `image`, `one-linkPartner`, `two-linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `arbit`, `type`, `newUser`, `passiv`, `soc` FROM `case` WHERE `name`= '$nameFile'");
 $resultSearch =mysqli_fetch_array($search);
 
 ?>
@@ -107,44 +94,70 @@ $resultSearch =mysqli_fetch_array($search);
 				<h1 class="text__title"><?php echo $resultSearch['one-title-page']; ?></h1>
 				<div class="categories">
 					<?php
-						if($resultSearch['site'] == 'on'){
-							echo '	<div class="categories__button">Заработок на сайте</div>';
+						if($resultSearch['soc'] == 'on'){
+							echo '	<div class="categories__button">Заработок на соц сетях</div>';
 						}
 						if($resultSearch['freelance'] == 'on'){
-							echo '<div class="categories__button">Фриланс</div>';
+							echo '<div class="categories__button">Арбитраж трафика</div>';
 						}
 						if($resultSearch['arbit'] == 'on'){
-							echo '<div class="categories__button">Арбитраж трафика</div>';
+							echo '<div class="categories__button">Пассивный заработок</div>';
 						}
 						if($resultSearch['newUser'] == 'on'){
 							echo '<div class="categories__button">Заработок для новичков</div>';
-						}
-						if($resultSearch['passiv'] == 'on'){
-							echo '<div class="categories__button">Пассивный заработок</div>';
-						}
-						if($resultSearch['mob'] == 'on'){
-							echo '<div class="categories__button">Заработок на моб. приложениях</div>';
 						}
 					?>
 				</div>
 			</center>
 		</div>
+		
 		<div class="previe" id="image">
 		</div>
+		
 		<div class="text katalog-text">
 			<center>
 				<h2 class="text__title"><?php echo $resultSearch['two-title-page']; ?></h2>
 				
-					<a href="<?php echo $resultSearch['linkPartner']; ?>"><div class="go" name="go">Регистрация</div></a>
-				
 			</center>
 		</div>
+		
 		<div class="state">
 			<p><strong>Вид заработка: <?php echo $resultSearch['type']; ?></strong></p>
 			<p>
 				 <?php echo $resultSearch['one-text']; ?>
 			</p>
 		</div>
+		
+		
+		
+		<div class="text katalog-text">
+			<center>
+				<h2 class="text__title"><?php echo $resultSearch['free-title-page']; ?></h2>
+				<a href="<?php echo $resultSearch['one-linkPartner']; ?>"><div class="go" name="go">Регистрация</div></a>
+			</center>
+		</div>
+		
+		<div class="state">
+			<p>
+				 <?php echo $resultSearch['two-text']; ?>
+			</p>
+		</div>
+		
+		
+		
+		<div class="text katalog-text">
+			<center>
+				<h2 class="text__title"><?php echo $resultSearch['foo-title-page']; ?></h2>
+				<a href="<?php echo $resultSearch['two-linkPartner']; ?>"><div class="go" name="go">Регистрация</div></a>
+			</center>
+		</div>
+		
+		<div class="state">
+			<p>
+				 <?php echo $resultSearch['free-text']; ?>
+			</p>
+		</div>
+		
 		<div class="plus-minus">
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Плюсы:</h3>
@@ -171,7 +184,7 @@ $resultSearch =mysqli_fetch_array($search);
 		</div>
 		<div class="state">
 			<p>
-				<?php echo $resultSearch['two-text']; ?>
+				<?php echo $resultSearch['foo-text']; ?>
 			</p>
 			
 		</div>
@@ -221,7 +234,7 @@ $resultSearch =mysqli_fetch_array($search);
 <script>
 	var imgId = document.getElementById('image');
 	var img = '<?php echo $resultSearch['image']; ?>';
-	var img = img.replace("/post",".");
+	var img = img.replace("/keys",".");
 	imgId.style.backgroundImage = 'url('+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';

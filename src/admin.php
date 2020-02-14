@@ -17,6 +17,10 @@ if (isset($_POST['submit'])){
 		$table = 'post';
 		$direct = 'post';
 		$link = 'state.php';
+	}if($keys == 'on'){
+		$table = 'case';
+		$direct = 'keys';
+		$link = 'keys.php';
 	}
 	
 	$uploadImg = './'.$direct.'/img/';
@@ -68,6 +72,16 @@ if (isset($_POST['submit'])){
 	$vpn= mysqli_real_escape_string($conect, trim($_POST['vpn']));
 	$proxy= mysqli_real_escape_string($conect, trim($_POST['proxy']));
 	$pay= mysqli_real_escape_string($conect, trim($_POST['pay']));
+	
+	$soc= mysqli_real_escape_string($conect, trim($_POST['soc']));
+	$freePageTitle= mysqli_real_escape_string($conect, trim($_POST['free-title']));
+	$onePartner= mysqli_real_escape_string($conect, trim($_POST['partner-one']));
+	$freeText= mysqli_real_escape_string($conect, trim($_POST['free-text']));
+	
+	$fooPageTitle= mysqli_real_escape_string($conect, trim($_POST['foo-title']));
+	$twoPartner= mysqli_real_escape_string($conect, trim($_POST['partner-two']));
+	$fooText= mysqli_real_escape_string($conect, trim($_POST['foo-text']));
+	
 	$loadImg = $uploadfile1;
 	
 	if(!empty($brausTtitle) and !empty($brausDescript) and !empty($name) and !empty($katalogTtitle) and !empty($onePageTitle) and !empty($partner) and !empty($type) and !empty($oneText) and !empty($hard) and !empty($money) and !empty($loadImg) /*and strlen($brausTtitle)<2139*/){
@@ -84,6 +98,13 @@ if (isset($_POST['submit'])){
 			}if($table == 'post'){
 				$queryPost ="INSERT INTO `".$table."` (`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$oneText', '$twoText', '$loadImg','$partner', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$site', '$freelance', '$arbit', '$type', '$newUser', '$passiv', '$mob')";
 				mysqli_query($conect, $queryPost);
+				//echo'фильм добавлен';
+				mysqli_close($conect);
+				header ('Location: '.$link.'');
+				exit();
+			}if($table == 'case'){
+				$queryKey ="INSERT INTO `".$table."` (`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `free-title-page`, `foo-title-page`, `one-text`, `two-text`, `free-text`, `foo-text`, `image`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `arbit`, `type`, `newUser`, `passiv`, `soc`, `one-linkPartner`, `two-linkPartner`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$freePageTitle', '$fooPageTitle', '$oneText', '$twoText', '$freeText', '$fooText', '$loadImg', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$arbit', '$type', '$newUser', '$passiv', '$soc', '$onePartner', '$twoPartner')";
+				mysqli_query($conect, $queryKey);
 				//echo'фильм добавлен';
 				mysqli_close($conect);
 				header ('Location: '.$link.'');
@@ -160,6 +181,10 @@ if (isset($_POST['submit'])){
 						<input type="radio" name="soft" id = "soft">
 						<span>Описание софта</span>
 					</div>
+					<div class="categories__element">
+						<input type="radio" name="keys" id = "keys">
+						<span>Описание кейса</span>
+					</div>
 				</div>
 				<input class="text__input" type="text" name="name" placeholder="Введите имя файла"/></br></br>
 				<input class="text__input" type="text" name="braus-title" placeholder="Введите заголовок для браузера"/></br></br>
@@ -225,6 +250,27 @@ if (isset($_POST['submit'])){
 						</div>
 					</div>
 				</div>
+				<div class="categories" id="free">
+					<h2 class="categories__title">Категории кейса</h2>
+					<div class="categories__block">
+						<div class="categories__element">
+							<input type="checkbox" name="newUser">
+							<span>Заработок для новичков</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="passiv">
+							<span>Пассивный заработок</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="arbit">
+							<span>Арбитраж трафика</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="soc">
+							<span>Заработок на соц. сетях</span>
+						</div>
+					</div>
+				</div>
 			</center>
 		</div>
 		<div class="previe">
@@ -234,7 +280,7 @@ if (isset($_POST['submit'])){
 		<div class="text katalog-text">
 			<center>
 				<input class="text__title" type="text" name="two-title" placeholder="Введите заголовок"/></br></br>
-				<input type="text"name="partner"placeholder="Ссылка на регистрацию"/>
+				<input id="noKey" type="text"name="partner"placeholder="Ссылка на регистрацию"/>
 			</center>
 		</div>
 		<div class="state">
@@ -257,6 +303,28 @@ if (isset($_POST['submit'])){
 			
 			<textarea class="state-text" type="text" name="one-text" placeholder="первый текст статьи"></textarea>
 		</div>
+		
+		<div class="text katalog-text  keys">
+			<center>
+				<input class="text__title keys" type="text" name="free-title" placeholder="Введите заголовок"/></br></br>
+				<input type="text"name="partner-one"placeholder="Ссылка на регистрацию"/>
+			</center>
+		</div>
+		<div class="state  keys">
+			<textarea class="state-text" type="text" name="free-text" placeholder="текст статьи"></textarea>
+		</div>
+		
+		
+		<div class="text katalog-text  keys">
+			<center>
+				<input class="text__title keys" type="text" name="foo-title" placeholder="Введите заголовок"/></br></br>
+				<input type="text"name="partner-two"placeholder="Ссылка на регистрацию"/>
+			</center>
+		</div>
+		<div class="state  keys">
+			<textarea class="state-text" type="text" name="foo-text" placeholder="текст статьи"></textarea>
+		</div>
+		
 		<div class="plus-minus">
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Плюсы:</h3>
@@ -337,6 +405,10 @@ if (isset($_POST['submit'])){
 						<input type="radio" name="post soft" id = "soft">
 						<span>Описание софта</span>
 					</div>
+					<div class="categories__element">
+						<input type="radio" name="keys" id = "keys">
+						<span>Описание кейса</span>
+					</div>
 				</div>
 				<input class="text__input" type="text" name="name" placeholder="Введите имя файла"/></br></br>
 				<input class="text__input" type="text" name="braus-title" placeholder="Введите заголовок для браузера"/></br></br>
@@ -402,6 +474,27 @@ if (isset($_POST['submit'])){
 						</div>
 					</div>
 				</div>
+				<div class="categories" id="free">
+					<h2 class="categories__title">Категории кейса</h2>
+					<div class="categories__block">
+						<div class="categories__element">
+							<input type="checkbox" name="newUser">
+							<span>Заработок для новичков</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="passiv">
+							<span>Пассивный заработок</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="arbit">
+							<span>Арбитраж трафика</span>
+						</div>
+						<div class="categories__element">
+							<input type="checkbox" name="soc">
+							<span>Заработок на соц. сетях</span>
+						</div>
+					</div>
+				</div>
 			</center>
 		</div>
 		<div class="previe">
@@ -411,7 +504,7 @@ if (isset($_POST['submit'])){
 		<div class="text katalog-text">
 			<center>
 				<input class="text__title" type="text" name="two-title" placeholder="Введите заголовок"/></br></br>
-				<input type="text"name="partner"placeholder="Ссылка на регистрацию"/>
+				<input id="noKey" type="text"name="partner"placeholder="Ссылка на регистрацию"/>
 			</center>
 		</div>
 		<div class="state">
@@ -433,6 +526,28 @@ if (isset($_POST['submit'])){
 			</div>
 			
 			<textarea class="state-text" type="text" name="one-text" placeholder="первый текст статьи"></textarea>
+			
+			<div class="text katalog-text  keys">
+			<center>
+				<input class="text__title keys" type="text" name="free-title" placeholder="Введите заголовок"/></br></br>
+				<input type="text"name="partner-one"placeholder="Ссылка на регистрацию"/>
+			</center>
+		</div>
+		<div class="state  keys">
+			<textarea class="state-text" type="text" name="free-text" placeholder="текст статьи"></textarea>
+		</div>
+		
+		
+		<div class="text katalog-text  keys">
+			<center>
+				<input class="text__title keys" type="text" name="foo-title" placeholder="Введите заголовок"/></br></br>
+				<input type="text"name="partner-two"placeholder="Ссылка на регистрацию"/>
+			</center>
+		</div>
+		<div class="state  keys">
+			<textarea class="state-text" type="text" name="foo-text" placeholder="текст статьи"></textarea>
+		</div>
+			
 		</div>
 		<div class="plus-minus">
 			<div class="plus-minus__element">
