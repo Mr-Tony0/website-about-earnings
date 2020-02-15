@@ -62,7 +62,8 @@ $resultSearch =mysqli_fetch_array($search);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>work</title>
+	<title><?php echo $resultSearch['title-braus']; ?></title>
+	<meta name="description" content="<?php echo $resultSearch['description-braus']; ?>">
 	<meta charset = "utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/modification.css">
