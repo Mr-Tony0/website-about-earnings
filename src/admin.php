@@ -7,6 +7,7 @@ if (isset($_POST['submit'])){
 	$session = 1;
 	$post =  mysqli_real_escape_string($conect, trim($_POST['post']));
 	$soft =  mysqli_real_escape_string($conect, trim($_POST['soft']));
+	$keys =  mysqli_real_escape_string($conect, trim($_POST['keys']));
 	//echo $soft.'1';
 	//echo $post.'2';
 	if($soft == 'on'){
@@ -18,7 +19,7 @@ if (isset($_POST['submit'])){
 		$direct = 'post';
 		$link = 'state.php';
 	}if($keys == 'on'){
-		$table = 'case';
+		$table = 'caze';
 		$direct = 'keys';
 		$link = 'keys.php';
 	}
@@ -83,9 +84,12 @@ if (isset($_POST['submit'])){
 	$fooText= mysqli_real_escape_string($conect, trim($_POST['foo-text']));
 	
 	$loadImg = $uploadfile1;
-	
-	if(!empty($brausTtitle) and !empty($brausDescript) and !empty($name) and !empty($katalogTtitle) and !empty($onePageTitle) and !empty($partner) and !empty($type) and !empty($oneText) and !empty($hard) and !empty($money) and !empty($loadImg) /*and strlen($brausTtitle)<2139*/){
-		$query ="SELECT * FROM `".$table."` WHERE linkPartner = '$partner' AND name = '$name'";
+	//echo $table;
+	//echo $table;
+	//echo $name;
+	if(!empty($brausTtitle) and !empty($brausDescript) and !empty($name) and !empty($katalogTtitle) and !empty($onePageTitle) and (!empty($partner) || !empty($onePartner)) and !empty($type) and !empty($oneText) and !empty($hard) and !empty($money) and !empty($loadImg) /*and strlen($brausTtitle)<2139*/){
+		//echo $table;
+		$query ="SELECT * FROM `".$table."` WHERE name = '$name'";
 		$data = mysqli_query($conect, $query);
 		if(mysqli_num_rows($data) == 0 ){
 			if($table == 'soft'){
@@ -102,8 +106,8 @@ if (isset($_POST['submit'])){
 				mysqli_close($conect);
 				header ('Location: '.$link.'');
 				exit();
-			}if($table == 'case'){
-				$queryKey ="INSERT INTO `".$table."` (`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `free-title-page`, `foo-title-page`, `one-text`, `two-text`, `free-text`, `foo-text`, `image`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `arbit`, `type`, `newUser`, `passiv`, `soc`, `one-linkPartner`, `two-linkPartner`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$freePageTitle', '$fooPageTitle', '$oneText', '$twoText', '$freeText', '$fooText', '$loadImg', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$arbit', '$type', '$newUser', '$passiv', '$soc', '$onePartner', '$twoPartner')";
+			}if($table == 'caze'){
+				$queryKey ="INSERT INTO `caze` (`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `free-title-page`, `foo-title-page`, `one-text`, `two-text`, `free-text`, `foo-text`, `image`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `arbit`, `type`, `newUser`, `passiv`, `soc`, `one-linkPartner`, `two-linkPartner`) VALUES('$name','$brausTtitle', '$brausDescript', '$katalogTtitle','$katalogDescript', '$onePageTitle', '$twoPageTitle', '$freePageTitle', '$fooPageTitle', '$oneText', '$twoText', '$freeText', '$fooText', '$loadImg', '$plus', '$minus', '$money', '$hard', '$date', '$rang', '$arbit', '$type', '$newUser', '$passiv', '$soc', '$onePartner', '$twoPartner')";
 				mysqli_query($conect, $queryKey);
 				//echo'фильм добавлен';
 				mysqli_close($conect);
@@ -168,7 +172,7 @@ if (isset($_POST['submit'])){
 		}
 	}else{
 		if($session == 1){ 
-		
+			
 			echo '<section class="container">
 		<div class="text katalog-text">
 			<center>
@@ -402,7 +406,7 @@ if (isset($_POST['submit'])){
 						<span>Описание заработка</span>
 					</div>
 					<div class="categories__element">
-						<input type="radio" name="post soft" id = "soft">
+						<input type="radio" name="soft" id = "soft">
 						<span>Описание софта</span>
 					</div>
 					<div class="categories__element">
@@ -526,8 +530,9 @@ if (isset($_POST['submit'])){
 			</div>
 			
 			<textarea class="state-text" type="text" name="one-text" placeholder="первый текст статьи"></textarea>
-			
-			<div class="text katalog-text  keys">
+		</div>
+		
+		<div class="text katalog-text  keys">
 			<center>
 				<input class="text__title keys" type="text" name="free-title" placeholder="Введите заголовок"/></br></br>
 				<input type="text"name="partner-one"placeholder="Ссылка на регистрацию"/>
@@ -547,8 +552,7 @@ if (isset($_POST['submit'])){
 		<div class="state  keys">
 			<textarea class="state-text" type="text" name="foo-text" placeholder="текст статьи"></textarea>
 		</div>
-			
-		</div>
+		
 		<div class="plus-minus">
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Плюсы:</h3>

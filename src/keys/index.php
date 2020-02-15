@@ -9,7 +9,7 @@
 	
 </head>
 <body>
-<!--<form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">-->
+<form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
@@ -53,18 +53,18 @@
 		</div>
 		<center>
 		<div class="categories">
-			<h2 class="categories__title">Категории программ для заработка</h2>
+			<h2 class="categories__title">Категории кейсов по заработку</h2>
 			<div class="categories__flex">
-				<a href="">
+				<a href="./dlya-novichkov/">
 					<div class="categories__button">Заработок для новичков</div>
 				</a>
-				<a href="">
+				<a href="./passivnyj/">
 					<div class="categories__button">Пассивный заработок</div>
 				</a>
-				<a href="">
+				<a href="./arbitraj/">
 					<div class="categories__button">Арбитраж трафика</div>
 				</a>
-				<a href="">
+				<a href="./socialnye-seti/">
 					<div class="categories__button">Заработок на соц сетях</div>
 				</a>
 			
@@ -73,7 +73,7 @@
 		<div class="filter">
 			<div class="type">
 				<p class="type__text">Вид заработка:</p>
-				<select class="type__select">
+				<select class="type__select" name="type">
 					<option>Выбирите вид заработка</option>
 					<option>Партнерские программы</option>
 					<option>Написание отзывов</option>
@@ -88,7 +88,7 @@
 			</div>
 			<div class="type">
 				<p class="type__text">Сложность:</p>
-				<select class="type__select">
+				<select class="type__select" name="hard">
 					<option>Выбирите сложность</option>
 					<option>Легко</option>
 					<option>Нормально</option>
@@ -97,7 +97,7 @@
 			</div>
 			<div class="type">
 				<p class="type__text">Доход:</p>
-				<select class="type__select">
+				<select class="type__select" name="money">
 					<option>Выбирите доходность</option>
 					<option>Низкая</option>
 					<option>Средняя</option>
@@ -105,88 +105,89 @@
 				</select>
 			</div>
 		</div>
-		<button class="go">Применить</button>
+		<button class="go" name="go">Применить</button>
 		<div class="content">
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/crypt.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/arbit.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/freelance.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/passiv.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/start.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/leadbit.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/partner.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
-			<a href="./state.php">
-			<div class="content__element">
-				<div class="content__img" style="background-image:url(./img/crypt.png)"></div>
-				<div class="content__text">
-					<h2 class="content__title">Этот заголовок содержит всего 60 символов это его максимум.. </h2>
-					<p class="content__descript">Это дескрипшион и он может содержать в районе 120 символов но
-					это не точно так как я еще не смотрел сколько тут имееться</p>
-				</div>
-			</div>
-			</a>
+			<?php
+				
+					
+				
+				
+				$conect = mysqli_connect('localhost','root','','posting');
+				
+				if (isset($_POST['go'])){
+					
+					$hard= mysqli_real_escape_string($conect, trim($_POST['hard']));
+					$money= mysqli_real_escape_string($conect, trim($_POST['money']));
+					$type = mysqli_real_escape_string($conect, trim($_POST['type']));
+					$search = mysqli_query($conect,"SELECT `money-level`, `name`, `hard-level`, `type`, `image`, `title-katalog`, `description-katalog` FROM `caze`");
+					while ($result_search = mysqli_fetch_array($search)){
+						$array[0] = "arbitraj";
+						$array[1] = "dlya-novichkov";
+						$array[2] = "socialnye-seti";
+						$array[3] = "passivnyj";
+						for($a = 0; $a<=3; $a++){
+							$dir = './'.$array[$a].'/';
+							if($handle = opendir($dir)){
+								while(false !== ($file = readdir($handle))) {
+									if(($file != "." && $file != ".." && $file == $result_search['name'].'.php') && (($result_search['type'] == $type && $hard == 'Выбирите сложность' && $money == 'Выбирите доходность') || ($result_search['type'] == $type && $hard == $result_search['hard-level'] && $money == $result_search['money-level']) || ($result_search['type'] == $type && $hard == $result_search['hard-level']) || ($result_search['type'] == $type && $money == $result_search['money-level']) || ($type == 'Выбирите вид заработка' && $hard == $result_search['hard-level'] && $money == 'Выбирите доходность') || ($type == 'Выбирите вид заработка' && $hard == $result_search['hard-level'] && $money == $result_search['money-level']) || ($type == 'Выбирите вид заработка' && $hard == 'Выбирите сложность' && $money == $result_search['money-level']) )){
+										
+											echo 
+										'<a href="./'.$array[$a].'/'.$result_search['name'].'.php">
+										<div class="content__element">
+											<div class="content__img" style="background-image:url(.'.$result_search['image'].')"></div>
+											<div class="content__text">
+												<h2 class="content__title">'.$result_search['title-katalog'].'</h2>
+												<p class="content__descript">'.$result_search['description-katalog'].'</p>
+											</div>
+										</div>
+										</a>';
+									}if(($file != "." && $file != ".." && $file == $result_search['name'].'.php') && ($money == 'Выбирите доходность' && $hard == 'Выбирите сложность' && $type == 'Выбирите вид заработка')){
+										echo 
+										'<a href="./'.$array[$a].'/'.$result_search['name'].'.php">
+										<div class="content__element">
+											<div class="content__img" style="background-image:url(.'.$result_search['image'].')"></div>
+											<div class="content__text">
+												<h2 class="content__title">'.$result_search['title-katalog'].'</h2>
+												<p class="content__descript">'.$result_search['description-katalog'].'</p>
+											</div>
+										</div>
+										</a>';
+									}
+								}
+							}
+						}
+					}
+				}else{
+				$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `caze`");
+					while ($result_state  = mysqli_fetch_array($state)){
+						$array[0] = "arbitraj";
+						$array[1] = "dlya-novichkov";
+						$array[2] = "socialnye-seti";
+						$array[3] = "passivnyj";
+						for($a = 0; $a<=3; $a++){
+							$dir = './'.$array[$a].'/';
+							if($handle = opendir($dir)){
+								while(false !== ($file = readdir($handle))) {
+									if($file != "." && $file != ".." && $file == $result_state['name'].'.php'){
+										echo 
+										'<a href="./'.$array[$a].'/'.$result_state['name'].'.php">
+										<div class="content__element">
+											<div class="content__img" style="background-image:url(.'.$result_state['image'].')"></div>
+											<div class="content__text">
+												<h2 class="content__title">'.$result_state['title-katalog'].'</h2>
+												<p class="content__descript">'.$result_state['description-katalog'].'</p>
+											</div>
+										</div>
+										</a>';
+									}
+								}
+								
+							}
+						}
+					}
+				}
+						
+			?>
 		</div>
 		</center>
 	</section>
@@ -222,7 +223,7 @@
 			<p class="footer__text mini-text">BigMoney © Все права защищены</p>
 		</div>
 	</footer>
-<!--</form>-->
+</form>
 
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="./js/mobile.js"></script>

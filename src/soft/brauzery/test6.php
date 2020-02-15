@@ -31,7 +31,6 @@ if($result['proxy'] == 'on'){
 	fclose($handle); // Закрыть файл
 }
 if($result['vpn'] == 'on'){
-	echo $name;
 	$file = "./soft/vpn/".$name.".php"; // Путь к новому файлу
 	$html = file_get_contents('./soft.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
@@ -77,14 +76,14 @@ $resultSearch =mysqli_fetch_array($search);
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="/src/index.php"><img class="logo__img" src="../img/logo.png" alt=""></a>
+				<a href="/src/"><img class="logo__img" src="../img/logo.png" alt=""></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/post/index.php">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/index.php">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/index.php">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/post/">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/keys/">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -97,10 +96,10 @@ $resultSearch =mysqli_fetch_array($search);
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="/src/post/index.php">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/soft/index.php">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/news/index.php">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/post/">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/soft/">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/keys/">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/news/">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">

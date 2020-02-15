@@ -3,61 +3,47 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(0);
 $conect = mysqli_connect('localhost','root','','posting');
-$sql = mysqli_query($conect, 'SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `date`, `coments`, `textWork`, `host`, `proxy`, `vpn`, `pay`, `brous` FROM `soft` ORDER BY id DESC LIMIT 1');
+$sql = mysqli_query($conect, 'SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `free-title-page`, `foo-title-page`, `one-text`, `two-text`, `free-text`, `foo-text`, `image`, `one-linkPartner`, `two-linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `arbit`, `type`, `newUser`, `passiv`, `soc` FROM `caze` ORDER BY id DESC LIMIT 1');
 $result = mysqli_fetch_array($sql);
 $name = $result['name'];
 
 
-
-if($result['textWork'] == 'on'){
-	$file = "./soft/rabota-s-tekstom/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['arbit'] == 'on'){
+	$file = "./keys/arbitraj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['host'] == 'on'){
-	$file = "./soft/host/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['newUser'] == 'on'){
+	$file = "./keys/dlya-novichkov/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['proxy'] == 'on'){
-	$file = "./soft/proxy/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['passiv'] == 'on'){
+	$file = "./keys/passivnyj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['vpn'] == 'on'){
-	$file = "./soft/vpn/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['soc	'] == 'on'){
+	echo $name;
+	$file = "./keys/socialnye-seti/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./keys.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['pay'] == 'on'){
-	$file = "./soft/platezhnye-sistemy/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
-	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
-	fwrite($handle,$html); // Записать содержимое в дескриптор
-	fclose($handle); // Закрыть файл
-}
-if($result['brous'] == 'on'){
-	$file = "./soft/brauzery/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
-	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
-	fwrite($handle,$html); // Записать содержимое в дескриптор
-	fclose($handle); // Закрыть файл
-}			
-
+			
 
 
 
 $path_parts = pathinfo($_SERVER['SCRIPT_NAME']);
 $nameFile = $path_parts['filename'];
-$search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `date`, `coments`, `textWork`, `host`, `proxy`, `vpn`, `pay`, `brous` FROM `soft` WHERE `name`= '$nameFile'");
+$search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `free-title-page`, `foo-title-page`, `one-text`, `two-text`, `free-text`, `foo-text`, `image`, `one-linkPartner`, `two-linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `arbit`, `type`, `newUser`, `passiv`, `soc` FROM `caze` WHERE `name`= '$nameFile'");
 $resultSearch =mysqli_fetch_array($search);
 
 ?>
@@ -76,14 +62,14 @@ $resultSearch =mysqli_fetch_array($search);
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="/src/"><img class="logo__img" src="../img/logo.png" alt=""></a>
+				<a href="/src/index.php"><img class="logo__img" src="../img/logo.png" alt=""></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/post/">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/keys/">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../index.php">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/index.php">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/index.php">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -96,10 +82,10 @@ $resultSearch =mysqli_fetch_array($search);
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="/src/post/">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/soft/">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/keys/">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/news/">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="../index.php">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/soft/index.php">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/news/index.php">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">
@@ -108,43 +94,70 @@ $resultSearch =mysqli_fetch_array($search);
 				<h1 class="text__title"><?php echo $resultSearch['one-title-page']; ?></h1>
 				<div class="categories">
 					<?php
-						if($resultSearch['textWork'] == 'on'){
-							echo '	<div class="categories__button">Работа с текстом</div>';
+						if($resultSearch['soc'] == 'on'){
+							echo '	<div class="categories__button">Заработок на соц сетях</div>';
 						}
-						if($resultSearch['host'] == 'on'){
-							echo '<div class="categories__button">Хостинг</div>';
+						if($resultSearch['freelance'] == 'on'){
+							echo '<div class="categories__button">Арбитраж трафика</div>';
 						}
-						if($resultSearch['proxy'] == 'on'){
-							echo '<div class="categories__button">Proxy</div>';
+						if($resultSearch['arbit'] == 'on'){
+							echo '<div class="categories__button">Пассивный заработок</div>';
 						}
-						if($resultSearch['vpn'] == 'on'){
-							echo '<div class="categories__button">VPN</div>';
-						}
-						if($resultSearch['pay'] == 'on'){
-							echo '<div class="categories__button">Платежные системы</div>';
-						}
-						if($resultSearch['brous'] == 'on'){
-							echo '<div class="categories__button">Браузеры</div>';
+						if($resultSearch['newUser'] == 'on'){
+							echo '<div class="categories__button">Заработок для новичков</div>';
 						}
 					?>
 				</div>
 			</center>
 		</div>
+		
 		<div class="previe" id="image">
 		</div>
+		
 		<div class="text katalog-text">
 			<center>
 				<h2 class="text__title"><?php echo $resultSearch['two-title-page']; ?></h2>
 				
-					<a href="<?php echo $resultSearch['linkPartner']; ?>"><div class="go" name="go">Регистрация</div></a>
-				
 			</center>
 		</div>
+		
 		<div class="state">
+			<p><strong>Вид заработка: <?php echo $resultSearch['type']; ?></strong></p>
 			<p>
 				 <?php echo $resultSearch['one-text']; ?>
 			</p>
 		</div>
+		
+		
+		
+		<div class="text katalog-text">
+			<center>
+				<h2 class="text__title"><?php echo $resultSearch['free-title-page']; ?></h2>
+				<a href="<?php echo $resultSearch['one-linkPartner']; ?>"><div class="go" name="go">Регистрация</div></a>
+			</center>
+		</div>
+		
+		<div class="state">
+			<p>
+				 <?php echo $resultSearch['two-text']; ?>
+			</p>
+		</div>
+		
+		
+		
+		<div class="text katalog-text">
+			<center>
+				<h2 class="text__title"><?php echo $resultSearch['foo-title-page']; ?></h2>
+				<a href="<?php echo $resultSearch['two-linkPartner']; ?>"><div class="go" name="go">Регистрация</div></a>
+			</center>
+		</div>
+		
+		<div class="state">
+			<p>
+				 <?php echo $resultSearch['free-text']; ?>
+			</p>
+		</div>
+		
 		<div class="plus-minus">
 			<div class="plus-minus__element">
 				<h3 class="plus-minus__title">Плюсы:</h3>
@@ -159,9 +172,19 @@ $resultSearch =mysqli_fetch_array($search);
 				</ul>
 			</div>
 		</div>
+		<div class="level">
+			<div class="level__element">
+				<h3 class="level__title">Уровень вашего дохода:</h3>
+				<p class="level__text"><?php echo $resultSearch['money-level']; ?></p>
+			</div>
+			<div class="level__element">
+				<h3 class="level__title">Сложность получения прибыли:</h3>
+				<p class="level__text"><?php echo $resultSearch['hard-level']; ?></p>
+			</div>
+		</div>
 		<div class="state">
 			<p>
-				<?php echo $resultSearch['two-text']; ?>
+				<?php echo $resultSearch['foo-text']; ?>
 			</p>
 			
 		</div>
@@ -211,8 +234,8 @@ $resultSearch =mysqli_fetch_array($search);
 <script>
 	var imgId = document.getElementById('image');
 	var img = '<?php echo $resultSearch['image']; ?>';
-	var img = img.replace("./soft",".");
-	imgId.style.backgroundImage = 'url(.'+img+')';
+	var img = img.replace("/keys",".");
+	imgId.style.backgroundImage = 'url('+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';
 	imgId.style.backgroundPosition = 'center';

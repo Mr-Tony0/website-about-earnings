@@ -17,10 +17,10 @@
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="../index.php">Статьи о заработке</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/index.php">Софт для заработка</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/index.php">Новости</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/post/">Статьи о заработке</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/soft/">Софт для заработка</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../">Кейсы по заработку</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="/src/news/">Новости</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 	</header>
 	<nav class="navigation">
 		<ul class="navigation__ul">
-			<li class="navigation__li"><a class="navigation__link" href="../index.php">Статьи о заработке</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/soft/index.php">Софт для заработка</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/keys/index.php">Кейсы по заработку</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="/src/news/index.php">Новости</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/post/">Статьи о заработке</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/soft/">Софт для заработка</a></li>
+			<li class="navigation__li"><a class="navigation__link" href=".../">Кейсы по заработку</a></li>
+			<li class="navigation__li"><a class="navigation__link" href="/src/news/">Новости</a></li>
 		</ul>
 	</nav>
 	<section class="container">
@@ -53,26 +53,21 @@
 		</div>
 		<center>
 		<div class="categories">
-			<h2 class="categories__title">Категории заработка</h2>
+			<h2 class="categories__title">Категории кейсов по заработку</h2>
 			<div class="categories__flex">
-				<a href="../dlya-novichkov/index.php">
+				<a href="../dlya-novichkov/">
 					<div class="categories__button">Заработок для новичков</div>
 				</a>
-				<a href="../passivnyj/index.php">
+				<a href="../passivnyj/">
 					<div class="categories__button">Пассивный заработок</div>
 				</a>
-				<a href="../site/index.php">
-					<div class="categories__button">Заработок на сайте</div>
-				</a>
-				<a href="../arbitraj/index.php">
+				<a href="./">
 					<div class="categories__button">Арбитраж трафика</div>
 				</a>
-				<a href="../freelance/index.php">
-					<div class="categories__button">Фриланс</div>
+				<a href="../socialnye-seti/">
+					<div class="categories__button">Заработок на соц сетях</div>
 				</a>
-				<a href="../mobilnye-prilozheniya/index.php">
-					<div class="categories__button">Заработок на моб. приложениях</div>
-				</a>
+			
 			</div>
 		</div>
 		<div class="filter">
@@ -80,7 +75,6 @@
 				<p class="type__text">Вид заработка:</p>
 				<select class="type__select" name="type">
 					<option>Выбирите вид заработка</option>
-					<option>Социальные сети</option>
 					<option>Партнерские программы</option>
 					<option>Написание отзывов</option>
 					<option>Создание сайтов</option>
@@ -120,9 +114,9 @@
 				$hard= mysqli_real_escape_string($conect, trim($_POST['hard']));
 				$money= mysqli_real_escape_string($conect, trim($_POST['money']));
 				$type = mysqli_real_escape_string($conect, trim($_POST['type']));
-				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `post` WHERE `arbit` = 'on'");
+				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `arbit` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
-						$img = str_replace("/post","",$result_state['image']);
+						$img = str_replace("/keys","",$result_state['image']);
 						if(($result_state['type'] == $type && $hard == 'Выбирите сложность' && $money == 'Выбирите доходность') || ($result_state['type'] == $type && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($result_state['type'] == $type && $hard == $result_state['hard-level']) || ($result_state['type'] == $type && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == 'Выбирите доходность') || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == 'Выбирите сложность' && $money == $result_state['money-level']) ){										
 							echo 
 								'<a href="./'.$result_state['name'].'.php">
@@ -148,9 +142,9 @@
 						}
 					}
 				}else{
-					$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `post` WHERE `arbit` = 'on'");
+					$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `arbit` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
-					$img = str_replace("/post","",$result_state['image']);
+					$img = str_replace("/keys","",$result_state['image']);
 					echo 
 						'<a href="./'.$result_state['name'].'.php">
 						<div class="content__element">
