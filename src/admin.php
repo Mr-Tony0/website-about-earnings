@@ -159,7 +159,7 @@ if (isset($_POST['submit'])){
 			}else{
 				echo'<p style="background:red; color:white; margin:0;">Не верный логин или пароль<p></br>
 					<div class="column">
-					<h2 class="column__title">Админ панель</h2>
+					<h2 class="column__title">Easy-admin.ru</h2>
 					<p class="column__text">введите логин от админ панели</p>
 					<input class="column__input" type = "text" name="login">
 					<p class="column__text">введите пароль от админ панели</p>
@@ -386,7 +386,7 @@ if (isset($_POST['submit'])){
 	}else{
 			echo'
 					<div class="column">
-					<h2 class="column__title">Админ панель</h2>
+					<h2 class="column__title">Easy-admin.ru</h2>
 					<p class="column__text">введите логин от админ панели</p>
 					<input class="column__input" type = "text" name="login">
 					<p class="column__text">введите пароль от админ панели</p>

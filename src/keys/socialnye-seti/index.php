@@ -114,7 +114,7 @@
 				$hard= mysqli_real_escape_string($conect, trim($_POST['hard']));
 				$money= mysqli_real_escape_string($conect, trim($_POST['money']));
 				$type = mysqli_real_escape_string($conect, trim($_POST['type']));
-				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `passiv` = 'on'");
+				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `soc` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
 						$img = str_replace("/keys","",$result_state['image']);
 						if(($result_state['type'] == $type && $hard == 'Выбирите сложность' && $money == 'Выбирите доходность') || ($result_state['type'] == $type && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($result_state['type'] == $type && $hard == $result_state['hard-level']) || ($result_state['type'] == $type && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == 'Выбирите доходность') || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == 'Выбирите сложность' && $money == $result_state['money-level']) ){										
@@ -142,7 +142,7 @@
 						}
 					}
 				}else{
-					$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `passiv` = 'on'");
+					$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `soc` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
 					$img = str_replace("/keys","",$result_state['image']);
 					echo 
