@@ -55,16 +55,16 @@
 		<div class="categories">
 			<h2 class="categories__title">Категории кейсов по заработку</h2>
 			<div class="categories__flex">
-				<a href="./">
-					<div class="categories__button">Заработок для новичков</div>
+				<a href="/src/keys/bez-vlozhenij/">
+					<div class="categories__button">Заработок без вложений</div>
 				</a>
-				<a href="../passivnyj/">
-					<div class="categories__button">Пассивный заработок</div>
+				<a href="/src/keys/s-vlozheniyami/">
+					<div class="categories__button">Заработок с вложениями</div>
 				</a>
-				<a href="../arbitraj/">
-					<div class="categories__button">Арбитраж трафика</div>
+				<a href="/src/keys/partnerskie-programmy/">
+					<div class="categories__button">Партнерские программы</div>
 				</a>
-				<a href="../socialnye-seti/">
+				<a href="/src/keys/socialnye-seti/">
 					<div class="categories__button">Заработок на соц сетях</div>
 				</a>
 			
@@ -75,14 +75,14 @@
 				<p class="type__text">Вид заработка:</p>
 				<select class="type__select" name="type">
 					<option>Выбирите вид заработка</option>
-					<option>Партнерские программы</option>
+					<option>Арбитраж трафика</option>
 					<option>Написание отзывов</option>
 					<option>Создание сайтов</option>
 					<option>Просмотр рекламы</option>
 					<option>Криптавалюта</option>
 					<option>Прохождение опросов</option>
-					<option>С вложениями</option>
-					<option>Без вложений</option>
+					<option>Для новичков</option>
+					<option>Пассивный заработок</option>
 					<option>Другие виды заработка</option>
 				</select>
 			</div>
@@ -114,7 +114,7 @@
 				$hard= mysqli_real_escape_string($conect, trim($_POST['hard']));
 				$money= mysqli_real_escape_string($conect, trim($_POST['money']));
 				$type = mysqli_real_escape_string($conect, trim($_POST['type']));
-				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `newUser` = 'on'");
+				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `passiv` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
 						$img = str_replace("/keys","",$result_state['image']);
 						if(($result_state['type'] == $type && $hard == 'Выбирите сложность' && $money == 'Выбирите доходность') || ($result_state['type'] == $type && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($result_state['type'] == $type && $hard == $result_state['hard-level']) || ($result_state['type'] == $type && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == 'Выбирите доходность') || ($type == 'Выбирите вид заработка' && $hard == $result_state['hard-level'] && $money == $result_state['money-level']) || ($type == 'Выбирите вид заработка' && $hard == 'Выбирите сложность' && $money == $result_state['money-level']) ){										
@@ -142,7 +142,7 @@
 						}
 					}
 				}else{
-					$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `newUser` = 'on'");
+					$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog`, `money-level`, `hard-level`, `type` FROM `caze` WHERE `passiv` = 'on'");
 					while ($result_state  = mysqli_fetch_array($state)){
 					$img = str_replace("/keys","",$result_state['image']);
 					echo 

@@ -55,16 +55,16 @@
 		<div class="categories">
 			<h2 class="categories__title">Категории кейсов по заработку</h2>
 			<div class="categories__flex">
-				<a href="./dlya-novichkov/">
-					<div class="categories__button">Заработок для новичков</div>
+				<a href="/src/keys/bez-vlozhenij/">
+					<div class="categories__button">Заработок без вложений</div>
 				</a>
-				<a href="./passivnyj/">
-					<div class="categories__button">Пассивный заработок</div>
+				<a href="/src/keys/s-vlozheniyami/">
+					<div class="categories__button">Заработок с вложениями</div>
 				</a>
-				<a href="./arbitraj/">
-					<div class="categories__button">Арбитраж трафика</div>
+				<a href="/src/keys/partnerskie-programmy/">
+					<div class="categories__button">Партнерские программы</div>
 				</a>
-				<a href="./socialnye-seti/">
+				<a href="/src/keys/socialnye-seti/">
 					<div class="categories__button">Заработок на соц сетях</div>
 				</a>
 			
@@ -75,14 +75,14 @@
 				<p class="type__text">Вид заработка:</p>
 				<select class="type__select" name="type">
 					<option>Выбирите вид заработка</option>
-					<option>Партнерские программы</option>
+					<option>Арбитраж трафика</option>
 					<option>Написание отзывов</option>
 					<option>Создание сайтов</option>
 					<option>Просмотр рекламы</option>
 					<option>Криптавалюта</option>
 					<option>Прохождение опросов</option>
-					<option>С вложениями</option>
-					<option>Без вложений</option>
+					<option>Для новичков</option>
+					<option>Пассивный заработок</option>
 					<option>Другие виды заработка</option>
 				</select>
 			</div>
@@ -121,10 +121,10 @@
 					$type = mysqli_real_escape_string($conect, trim($_POST['type']));
 					$search = mysqli_query($conect,"SELECT `money-level`, `name`, `hard-level`, `type`, `image`, `title-katalog`, `description-katalog` FROM `caze`");
 					while ($result_search = mysqli_fetch_array($search)){
-						$array[0] = "arbitraj";
-						$array[1] = "dlya-novichkov";
+						$array[0] = "bez-vlozhenij";
+						$array[1] = "partnerskie-programmy";
 						$array[2] = "socialnye-seti";
-						$array[3] = "passivnyj";
+						$array[3] = "s-vlozheniyami";
 						for($a = 0; $a<=3; $a++){
 							$dir = './'.$array[$a].'/';
 							if($handle = opendir($dir)){
@@ -160,10 +160,10 @@
 				}else{
 				$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `caze`");
 					while ($result_state  = mysqli_fetch_array($state)){
-						$array[0] = "arbitraj";
-						$array[1] = "dlya-novichkov";
+						$array[0] = "bez-vlozhenij";
+						$array[1] = "partnerskie-programmy";
 						$array[2] = "socialnye-seti";
-						$array[3] = "passivnyj";
+						$array[3] = "s-vlozheniyami";
 						for($a = 0; $a<=3; $a++){
 							$dir = './'.$array[$a].'/';
 							if($handle = opendir($dir)){

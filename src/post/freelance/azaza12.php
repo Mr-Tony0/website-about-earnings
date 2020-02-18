@@ -180,39 +180,6 @@ $resultSearch =mysqli_fetch_array($search);
 				<a href="<?php echo $resultSearch['coments']; ?>"><p class="date__element rang">Отзывы</p></a>
 				<p class="date__element number"><?php echo $resultSearch['date']; ?></p>
 			</div>
-			<div class="rec">
-				<div class="rec__block">
-					<?php
-					$conect = mysqli_connect('localhost','root','','posting');
-					$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` ORDER BY `date` DESC LIMIT 4");
-					while ($result_state = mysqli_fetch_array($state)){
-						$array[0] = "arbitraj";
-						$array[1] = "dlya-novichkov";
-						$array[2] = "freelance";
-						$array[3] = "mobilnye-prilozheniya";
-						$array[4] = "site";
-						$array[5] = "passivnyj";
-						for($a = 0; $a<=5; $a++){
-							$dir = '../'.$array[$a].'/';
-							if($handle = opendir($dir)){
-								while(false !== ($file = readdir($handle))){
-									if($file != "." && $file != ".." && $file == $result_state['name'].'.php'){
-										$img = str_replace("/post","",$result_state['image']);
-										echo
-										'<div class="rec__element">
-											<a href="'.$dir.$result_state['name'].'.php">
-												<div class="rec__img" style="background-image:url(.'.$img.');"></div>
-												<p class="rec__text">'.$result_state['name'].'</p>
-											</a>
-										</div>';
-									}
-								}
-							}
-						}
-					}
-					?>
-				</div>
-			</div>
 		</center>
 	</section>
 	<footer class="footer">

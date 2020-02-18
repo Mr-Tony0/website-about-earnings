@@ -259,15 +259,15 @@ if (isset($_POST['submit'])){
 					<div class="categories__block">
 						<div class="categories__element">
 							<input type="checkbox" name="newUser">
-							<span>Заработок для новичков</span>
+							<span>С вложениями</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="passiv">
-							<span>Пассивный заработок</span>
+							<span>Без вложений</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="arbit">
-							<span>Арбитраж трафика</span>
+							<span>Партнерские программы</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="soc">
@@ -301,6 +301,9 @@ if (isset($_POST['submit'])){
 					<option>Прохождение опросов</option>
 					<option>С вложениями</option>
 					<option>Без вложений</option>
+					<option>Арбитраж трафика</option>
+					<option>Для новичков</option>
+					<option>Пассивный заработок</option>
 					<option>Другие виды заработка</option>
 				</select>
 			</div>
@@ -483,15 +486,15 @@ if (isset($_POST['submit'])){
 					<div class="categories__block">
 						<div class="categories__element">
 							<input type="checkbox" name="newUser">
-							<span>Заработок для новичков</span>
+							<span>С вложениями</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="passiv">
-							<span>Пассивный заработок</span>
+							<span>Без вложений</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="arbit">
-							<span>Арбитраж трафика</span>
+							<span>Партнерские программы</span>
 						</div>
 						<div class="categories__element">
 							<input type="checkbox" name="soc">
@@ -525,6 +528,9 @@ if (isset($_POST['submit'])){
 					<option>Прохождение опросов</option>
 					<option>С вложениями</option>
 					<option>Без вложений</option>
+					<option>Арбитраж трафика</option>
+					<option>Для новичков</option>
+					<option>Пассивный заработок</option>
 					<option>Другие виды заработка</option>
 				</select>
 			</div>

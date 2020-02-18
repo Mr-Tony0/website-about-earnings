@@ -53,48 +53,37 @@
 			<div class="top__right">
 				<h2 class="top__title">Новые способы заработка</h2>
 				<div class="top__new">
-					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('./img/arbit.png')" >
-							<a href="#"><div class="top__hover">
-							<span class="top__button">Подробнее</span>
-							</div></a>
-						</div>
-					</div>
-					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('./img/passiv.png')" >
-							<a href="#"><div class="top__hover">
-							<span class="top__button">Подробнее</span>
-							</div></a>
-						</div>
-					</div>
-					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('./img/crypt.png')" >
-							<a href="#"><div class="top__hover">
-							<span class="top__button">Подробнее</span>
-							</div></a>
-						</div>
-					</div>
-					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('./img/site.png')" >
-							<a href="#"><div class="top__hover">
-							<span class="top__button">Подробнее</span>
-							</div></a>
-						</div>
-					</div>
-					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('./img/freelance.png')" >
-							<a href="#"><div class="top__hover">
-							<span class="top__button">Подробнее</span>
-							</div></a>
-						</div>
-					</div>
-					<div class="top__element">
-						<div class="top__img" id ="" style= "background-image:url('./img/leadbit.png')" >
-							<a href="#"><div class="top__hover">
-							<span class="top__button">Подробнее</span>
-							</div></a>
-						</div>
-					</div>
+					<?php
+
+					$conect = mysqli_connect('localhost','root','','posting');
+					$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` ORDER BY `date` DESC LIMIT 6");
+					while ($result_state = mysqli_fetch_array($state)){
+						$array[0] = "arbitraj";
+						$array[1] = "dlya-novichkov";
+						$array[2] = "freelance";
+						$array[3] = "mobilnye-prilozheniya";
+						$array[4] = "site";
+						$array[5] = "passivnyj";
+						for($a = 0; $a<=5; $a++){
+							$dir = './post/'.$array[$a].'/';
+							if($handle = opendir($dir)){
+								while(false !== ($file = readdir($handle))){
+									if($file != "." && $file != ".." && $file == $result_state['name'].'.php'){
+										echo
+										'<div class="top__element">
+											<div class="top__img" id ="" style= "background-image:url('.$result_state['image'].')" >
+												<a href="/src/'.$dir.''.$result_state['name'].'.php"><div class="top__hover">
+												<span class="top__button">'.$result_state['name'].'</span>
+												</div></a>
+											</div>
+										</div>';
+									}
+								}
+							}
+						}
+					}
+					?>
+
 				</div>
 			</div>
 		</div>

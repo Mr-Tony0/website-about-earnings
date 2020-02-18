@@ -184,7 +184,7 @@ $resultSearch =mysqli_fetch_array($search);
 				<div class="rec__block">
 					<?php
 					$conect = mysqli_connect('localhost','root','','posting');
-					$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` ORDER BY `date` DESC LIMIT 4");
+					$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` ORDER BY `date` DESC LIMIT 5");
 					while ($result_state = mysqli_fetch_array($state)){
 						$array[0] = "arbitraj";
 						$array[1] = "dlya-novichkov";

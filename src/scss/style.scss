@@ -9,6 +9,7 @@ body{
 	padding:0;
 	max-width:1920px;
 	min-width:320px;
+	
 }
 
 	/***header style**/
@@ -116,14 +117,15 @@ header,.navigation{
 		
 	}
 	&__element{
-		height:150px;
-		width:250px;
+		height:120px;
+		width:220px;
 		background:rgba(231,76,60,0.5);
 		margin-left:2%;
 		text-align:center
 	}
 	&__title{
-		margin:0.4em;
+		margin-top:0;
+		margin-bottom:1em;
 		height:30px;
 	}
 	&__descript{
@@ -453,7 +455,35 @@ header,.navigation{
 	height:800px;
 }
 
-
+.rec{
+	width:100%;
+	margin-bottom:50px;
+	margin-top:20px;
+	&__block{
+		width:100%;
+		display:flex;
+		flex-wrap:wrap;
+	}
+	&__element{
+		width:180px;
+		height:150px;
+		margin:0 auto;
+		padding:10px;
+		min-width:180px;
+		min-height:150px;
+	}
+	&__img{
+		width:100%;
+		height:100px;
+		@include imag;
+		
+		
+	}
+	&__text{
+		color:$elements;
+		font-family:$menu;
+	}
+}
 
 
 .column{
@@ -641,7 +671,6 @@ header,.navigation{
 			height:55%;
 		}
 	}
-	
 }
 @media screen and (min-width: 609px) and (max-width: 924px){
 	.previe{
@@ -724,8 +753,37 @@ header,.navigation{
 	}
 	
 }
+@media screen and (min-width: 744px) and (max-width: 926px){
+	.rec{
+		&__element{
+			min-width:0;
+			min-height:0;
+			width:140px;
+			height:120px;
+		}
+	}
+}
+@media screen and (min-width: 520px) and (max-width: 744px){
+	.rec{
+		&__element{
+			min-width:0;
+			min-height:0;
+			width:200px;
+			height:180px;
+		}
+	}
+}
+@media screen and (min-width: 320px) and (max-width: 520px){
+	.rec{
+		&__element{
+			min-width:0;
+			min-height:0;
+			width:180px;
+			height:160px;
+		}
+	}
+}
 @media screen and (min-width: 320px) and (max-width: 1080px){
-	
 	.footer{
 		&__center{
 			flex-wrap:wrap;
