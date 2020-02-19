@@ -129,7 +129,8 @@ header,.navigation{
 		height:30px;
 	}
 	&__descript{
-		margin:12px;
+		//margin:12px;
+		margin-inline-start:0em;
 	}
 	&__new{
 		display:flex;
