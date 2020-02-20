@@ -64,7 +64,7 @@
 				<a href="./site/index.php">
 					<div class="categories__button">Заработок на сайте</div>
 				</a>
-				<a href="../arbitraj/index.php">
+				<a href="./arbitraj/index.php">
 					<div class="categories__button">Арбитраж трафика</div>
 				</a>
 				<a href="./freelance/index.php">

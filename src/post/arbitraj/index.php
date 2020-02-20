@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>work</title>
+	<title>Как начать заработок на арбитраже трафика, пошаговая инструкция по заработку</title>
+	<meta name="description" content="Для тех кто ищет способы заработка на арбитраже трафика, мы пошагово рассмотрим как начать зарабатывать на арбитраже трафика и расскажем сколько вы сможете заработать.">
 	<meta charset = "utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/modification.css">
