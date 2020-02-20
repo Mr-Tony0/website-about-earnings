@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 13 2020 г., 19:14
+-- Время создания: Фев 20 2020 г., 08:38
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -58,9 +58,13 @@ CREATE TABLE `soft` (
 --
 
 INSERT INTO `soft` (`id`, `name`, `title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `date`, `coments`, `brous`, `pay`, `vpn`, `proxy`, `host`, `textWork`) VALUES
-(19, 'test6', 'test6', 'test6', 'test6', 'test6', 'test6', 'test5', 'echo $table;', 'echo $table;', './soft/img/20200213182016881.jpg', 'test5', 'echo $table;', 'echo $table;', '2020-02-05', '', 'on', '', '', '', '', ''),
-(20, 'test7', 'test7', 'test7', 'test7', 'test7', 'test7', 'test5', 'echo $table;', 'echo $table;', './soft/img/20200213182314935.jpg', 'test7', 'echo $table;', 'echo $table;', '2020-02-05', '', '', '', '', '', '', 'on'),
-(21, 'test8', 'test8', 'test8', 'test8', 'test8', 'test8', 'test8', 'echo $table;', 'echo $table;', './soft/img/20200213182459421.jpg', 'test8', 'echo $table;', 'echo $table;', '2020-02-05', '', '', '', '', '', 'on', '');
+(22, 'test5', 'test5', 'test5', 'test5', 'test5', 'test5', 'test5', 'test5', 'test5', './soft/img/20200215142441177.jpg', 'test5', 'test5', 'test5', '2020-02-15', '', 'on', '', '', '', '', ''),
+(23, 'test6', 'test6', 'test6', 'test6', 'test6', 'test6', 'test6', 'test5', 'test5', './soft/img/20200215142531679.jpg', 'test6', 'test5', 'test5', '2020-02-15', '', 'on', '', '', '', '', ''),
+(24, 'test7', 'test7', 'test7', 'test7', 'test7', 'test7', 'test7', 'test7', 'test7', './soft/img/20200215142655740.jpg', 'test7', 'test7', 'test7', '2020-02-15', '', '', '', '', '', '', 'on'),
+(25, 'newtest3', 'newtest3', 'newtest3', 'newtest3', 'newtest3', 'newtest3', 'newtest3', 'newtest3', 'newtest3', './soft/img/20200215143949566.jpg', 'newtest3', 'newtest3', 'newtest3', '2020-02-15', '', '', '', '', '', '', 'on'),
+(26, 'reder', 'Это крутой заголовок', 'не менее крутой дескрипшин', 'newtest3', 'newtest3', 'newtest3', 'newtest3', 'newtest3', 'newtest3', './soft/img/20200215145607733.jpg', 'newtest3', 'newtest3', 'newtest3', '2020-02-15', '', '', '', '', '', 'on', ''),
+(27, 'testtttt', 'тестовый заголовок из сем ядра', 'тестовый дескрипшин из сем ядра', 'просто заголовок', 'просто дескрипшин', 'Как пить пиво и зарабатывать 100000000000 рублей в час', 'Заработок на leadbit без вложений', 'Заработок на leadbit без вложений', 'Заработок на leadbit без вложений', './soft/img/20200216063431706.jpg', 'Заработок на leadbit без вложений', 'Заработок на leadbit', 'Заработок', '2020-02-15', 'Заработок на leadbit без вложений', '', '', '', '', 'on', ''),
+(28, 'testttttуу', 'тестовый заголовок из сем ядра', 'тестовый дескрипшин из сем ядра', 'просто заголовок', 'просто дескрипшин', 'Как пить пиво и зарабатывать 100000000000 рублей в час', 'Заработок на leadbit без вложений', 'Заработок на leadbit без вложений', 'Заработок на leadbit без вложений', './soft/img/20200216063658364.jpg', 'Заработок на leadbit без вложений', 'Заработок на leadbit', 'Заработок', '2020-02-15', 'Заработок на leadbit без вложений', '', '', '', '', 'on', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -80,7 +84,7 @@ ALTER TABLE `soft`
 -- AUTO_INCREMENT для таблицы `soft`
 --
 ALTER TABLE `soft`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
