@@ -1,0 +1,7 @@
+﻿User-agent: *
+Disallow: /admin.php
+Disallow: /keys.php
+Disallow: /soft.php
+Disallow: /state.php
+Disallow: /news/
+Host: http://bigmoney.ru/
