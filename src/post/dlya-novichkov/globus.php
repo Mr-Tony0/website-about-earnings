@@ -68,6 +68,7 @@ $resultSearch =mysqli_fetch_array($search);
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/modification.css">
 	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<link rel = "icon" href="../img/favicon.ico" type="image/x-icon">
 	
 </head>
 <body>
@@ -183,9 +184,8 @@ $resultSearch =mysqli_fetch_array($search);
 			<div class="rec">
 				<div class="rec__block">
 					<?php
-
 					$conect = mysqli_connect('localhost','root','','posting');
-					$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` ORDER BY `date` DESC LIMIT 5");
+					$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` ORDER BY `date` DESC LIMIT 4");
 					while ($result_state = mysqli_fetch_array($state)){
 						$array[0] = "arbitraj";
 						$array[1] = "dlya-novichkov";
@@ -223,12 +223,12 @@ $resultSearch =mysqli_fetch_array($search);
 				<h2 class="footer__text">О проекте</h2>
 				<p class="footer__text">
 					<span class="footer__text big-red">BigMoney</span> - это проект, который помогает пользователям
-					интернета заработать деньги в сети.
-					Мы рассказываем про различные способы заработка,
+					интернета получать деньги в сети.
+					Мы рассказываем про различные способы монетизации,
 					способы которые реально работают.
 					Мы не рекламируем казино, ставки и подобные им мошеннические организации.
 					Мы даем все что бы вы могли создать бизнес в сети.
-					У нас вы найдете для себя реальный метод заработка в Интернете,
+					У нас вы найдете для себя реальный метод извлечения прибыли в Интернете,
 					который будет стабильно приносить вам доход.
 				</p>
 				

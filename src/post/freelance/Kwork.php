@@ -3,50 +3,49 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(0);
 $conect = mysqli_connect('localhost','root','','posting');
-$sql = mysqli_query($conect, 'SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `date`, `coments`, `textWork`, `host`, `proxy`, `vpn`, `pay`, `brous` FROM `soft` ORDER BY id DESC LIMIT 1');
+$sql = mysqli_query($conect, 'SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob` FROM `post` ORDER BY id DESC LIMIT 1');
 $result = mysqli_fetch_array($sql);
 $name = $result['name'];
 
 
-
-if($result['textWork'] == 'on'){
-	$file = "./soft/rabota-s-tekstom/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['site'] == 'on'){
+	$file = "./post/site/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['host'] == 'on'){
-	$file = "./soft/host/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['freelance'] == 'on'){
+	$file = "./post/freelance/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['proxy'] == 'on'){
-	$file = "./soft/proxy/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['arbit'] == 'on'){
+	$file = "./post/arbitraj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['vpn'] == 'on'){
-	$file = "./soft/vpn/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['newUser'] == 'on'){
+	$file = "./post/dlya-novichkov/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['pay'] == 'on'){
-	$file = "./soft/platezhnye-sistemy/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['passiv'] == 'on'){
+	$file = "./post/passivnyj/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
 }
-if($result['brous'] == 'on'){
-	$file = "./soft/brauzery/".$name.".php"; // Путь к новому файлу
-	$html = file_get_contents('./soft.php'); // Содержимое
+if($result['mob'] == 'on'){
+	$file = "./post/mobilnye-prilozheniya/".$name.".php"; // Путь к новому файлу
+	$html = file_get_contents('./state.php'); // Содержимое
 	$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 	fwrite($handle,$html); // Записать содержимое в дескриптор
 	fclose($handle); // Закрыть файл
@@ -54,21 +53,22 @@ if($result['brous'] == 'on'){
 
 
 
-
 $path_parts = pathinfo($_SERVER['SCRIPT_NAME']);
 $nameFile = $path_parts['filename'];
-$search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `date`, `coments`, `textWork`, `host`, `proxy`, `vpn`, `pay`, `brous` FROM `soft` WHERE `name`= '$nameFile'");
+$search = mysqli_query($conect, "SELECT `ID`,`name`,`title-braus`, `description-braus`, `title-katalog`, `description-katalog`, `one-title-page`, `two-title-page`, `one-text`, `two-text`, `image`, `linkPartner`, `plus`, `minus`, `money-level`, `hard-level`, `date`, `coments`, `site`, `freelance`, `arbit`, `type`, `newUser`, `passiv`, `mob` FROM `post` WHERE `name`= '$nameFile'");
 $resultSearch =mysqli_fetch_array($search);
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>work</title>
+	<title><?php echo $resultSearch['title-braus']; ?></title>
+	<meta name="description" content="<?php echo $resultSearch['description-braus']; ?>">
 	<meta charset = "utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/modification.css">
 	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<link rel = "icon" href="../img/favicon.ico" type="image/x-icon">
 	
 </head>
 <body>
@@ -108,23 +108,23 @@ $resultSearch =mysqli_fetch_array($search);
 				<h1 class="text__title"><?php echo $resultSearch['one-title-page']; ?></h1>
 				<div class="categories">
 					<?php
-						if($resultSearch['textWork'] == 'on'){
-							echo '	<div class="categories__button">Работа с текстом</div>';
+						if($resultSearch['site'] == 'on'){
+							echo '	<div class="categories__button">Заработок на сайте</div>';
 						}
-						if($resultSearch['host'] == 'on'){
-							echo '<div class="categories__button">Хостинг</div>';
+						if($resultSearch['freelance'] == 'on'){
+							echo '<div class="categories__button">Фриланс</div>';
 						}
-						if($resultSearch['proxy'] == 'on'){
-							echo '<div class="categories__button">Proxy</div>';
+						if($resultSearch['arbit'] == 'on'){
+							echo '<div class="categories__button">Арбитраж трафика</div>';
 						}
-						if($resultSearch['vpn'] == 'on'){
-							echo '<div class="categories__button">VPN</div>';
+						if($resultSearch['newUser'] == 'on'){
+							echo '<div class="categories__button">Заработок для новичков</div>';
 						}
-						if($resultSearch['pay'] == 'on'){
-							echo '<div class="categories__button">Платежные системы</div>';
+						if($resultSearch['passiv'] == 'on'){
+							echo '<div class="categories__button">Пассивный заработок</div>';
 						}
-						if($resultSearch['brous'] == 'on'){
-							echo '<div class="categories__button">Браузеры</div>';
+						if($resultSearch['mob'] == 'on'){
+							echo '<div class="categories__button">Заработок на моб. приложениях</div>';
 						}
 					?>
 				</div>
@@ -141,6 +141,7 @@ $resultSearch =mysqli_fetch_array($search);
 			</center>
 		</div>
 		<div class="state">
+			<p><strong>Вид заработка: <?php echo $resultSearch['type']; ?></strong></p>
 			<p>
 				 <?php echo $resultSearch['one-text']; ?>
 			</p>
@@ -159,6 +160,16 @@ $resultSearch =mysqli_fetch_array($search);
 				</ul>
 			</div>
 		</div>
+		<div class="level">
+			<div class="level__element">
+				<h3 class="level__title">Уровень вашего дохода:</h3>
+				<p class="level__text"><?php echo $resultSearch['money-level']; ?></p>
+			</div>
+			<div class="level__element">
+				<h3 class="level__title">Сложность получения прибыли:</h3>
+				<p class="level__text"><?php echo $resultSearch['hard-level']; ?></p>
+			</div>
+		</div>
 		<div class="state">
 			<p>
 				<?php echo $resultSearch['two-text']; ?>
@@ -170,6 +181,39 @@ $resultSearch =mysqli_fetch_array($search);
 				<a href="<?php echo $resultSearch['coments']; ?>"><p class="date__element rang">Отзывы</p></a>
 				<p class="date__element number"><?php echo $resultSearch['date']; ?></p>
 			</div>
+			<div class="rec">
+				<div class="rec__block">
+					<?php
+					$conect = mysqli_connect('localhost','root','','posting');
+					$state = mysqli_query($conect,"SELECT `name`,`image`,`title-katalog`,`description-katalog` FROM `post` ORDER BY `date` DESC LIMIT 4");
+					while ($result_state = mysqli_fetch_array($state)){
+						$array[0] = "arbitraj";
+						$array[1] = "dlya-novichkov";
+						$array[2] = "freelance";
+						$array[3] = "mobilnye-prilozheniya";
+						$array[4] = "site";
+						$array[5] = "passivnyj";
+						for($a = 0; $a<=5; $a++){
+							$dir = '../'.$array[$a].'/';
+							if($handle = opendir($dir)){
+								while(false !== ($file = readdir($handle))){
+									if($file != "." && $file != ".." && $file == $result_state['name'].'.php'){
+										$img = str_replace("/post","",$result_state['image']);
+										echo
+										'<div class="rec__element">
+											<a href="'.$dir.$result_state['name'].'.php">
+												<div class="rec__img" style="background-image:url(.'.$img.');"></div>
+												<p class="rec__text">'.$result_state['name'].'</p>
+											</a>
+										</div>';
+									}
+								}
+							}
+						}
+					}
+					?>
+				</div>
+			</div>
 		</center>
 	</section>
 	<footer class="footer">
@@ -179,12 +223,12 @@ $resultSearch =mysqli_fetch_array($search);
 				<h2 class="footer__text">О проекте</h2>
 				<p class="footer__text">
 					<span class="footer__text big-red">BigMoney</span> - это проект, который помогает пользователям
-					интернета заработать деньги в сети.
-					Мы рассказываем про различные способы заработка,
+					интернета получать деньги в сети.
+					Мы рассказываем про различные способы монетизации,
 					способы которые реально работают.
 					Мы не рекламируем казино, ставки и подобные им мошеннические организации.
 					Мы даем все что бы вы могли создать бизнес в сети.
-					У нас вы найдете для себя реальный метод заработка в Интернете,
+					У нас вы найдете для себя реальный метод извлечения прибыли в Интернете,
 					который будет стабильно приносить вам доход.
 				</p>
 				
@@ -211,8 +255,8 @@ $resultSearch =mysqli_fetch_array($search);
 <script>
 	var imgId = document.getElementById('image');
 	var img = '<?php echo $resultSearch['image']; ?>';
-	var img = img.replace("./soft",".");
-	imgId.style.backgroundImage = 'url(.'+img+')';
+	var img = img.replace("/post",".");
+	imgId.style.backgroundImage = 'url('+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';
 	imgId.style.backgroundPosition = 'center';

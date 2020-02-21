@@ -108,7 +108,7 @@
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
-			<h3 class="bottom__title">Мобильные приложения</h3>
+			<a href="./post/mobilnye-prilozheniya/index.php"><h3 class="bottom__title">Мобильные приложения</h3></a>
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/site.png')" >
@@ -116,7 +116,7 @@
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
-			<h3 class="bottom__title">Свой сайт</h3>
+			<a href="./post/site/index.php"><h3 class="bottom__title">Свой сайт</h3></a>
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/freelance.png')" >
@@ -124,7 +124,7 @@
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
-			<h3 class="bottom__title">Фриланс</h3>
+			<a href="./post/freelance/index.php"><h3 class="bottom__title">Фриланс</h3></a>
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/start.png')" >
@@ -132,7 +132,7 @@
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
-			<h3 class="bottom__title">Для новичков</h3>
+			<a href="./post/dlya-novichkov/index.php"><h3 class="bottom__title">Для новичков</h3></a>
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/arbit.png')" >
@@ -140,7 +140,7 @@
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
-			<h3 class="bottom__title">Арбитраж трафика</h3>
+			<a href="./post/arbitraj/index.php"><h3 class="bottom__title">Арбитраж трафика</h3></a>
 			</div>
 			<div class="bottom__element">
 				<div class="bottom__img" id ="" style= "background-image:url('./img/passiv.png')" >
@@ -148,7 +148,7 @@
 				<span class="bottom__button">Заработать</span>
 				</div></a>
 			</div>
-			<h3 class="bottom__title">Пасивный заработок</h3>
+			<a href="./post/passivnyj/index.php"><h3 class="bottom__title">Пасивный заработок</h3></a>
 			</div>
 		</div>
 	</section>
