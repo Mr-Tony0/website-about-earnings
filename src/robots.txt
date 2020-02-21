@@ -4,4 +4,5 @@ Disallow: /keys.php
 Disallow: /soft.php
 Disallow: /state.php
 Disallow: /news/
+Disallow: /soft/
 Host: http://bigmoney.ru/

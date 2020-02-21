@@ -41,14 +41,9 @@
 	</nav>
 	<section class="container">
 		<div class="text katalog-text">
-			<h1 class="text__title">(Заголовок из ся)</h1>
+			<h1 class="text__title"></h1>
 			<p class="text__descript">
-				Таким образом реализация намеченных плановых заданий
-				обеспечивает широкому кругу (специалистов) участие в формировании систем массового участия.
-				Повседневная практика показывает, что новая модель организационной деятельности
-				позволяет оценить значение форм развития.
-				Разнообразный и богатый опыт консультация с широким активом позволяет выполнять
-				важные задания по разработке соответствующий условий активизации.
+				
 			</p>
 		</div>
 		<center>
@@ -77,7 +72,7 @@
 		</div>
 		
 		<div class="content">
-		
+			<h2 class="content__error">Сервисы временно не доступны!</h2>
 			<?php
 				$conect = mysqli_connect('localhost','root','','posting');
 				$state = mysqli_query($conect,"SELECT `name`, `image`, `title-katalog`, `description-katalog` FROM `soft` WHERE `textWork` = 'on'");
