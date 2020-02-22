@@ -101,7 +101,7 @@
 			<div class = "footer__element">
 				<h2 class="footer__text">О проекте</h2>
 				<p class="footer__text">
-					<span class="footer__text big-red">BigMoney</span> - это проект, который помогает пользователям
+					<span class="footer__text big-red">KeyFromMoney</span> - это проект, который помогает пользователям
 					интернета получать деньги в сети.
 					Мы рассказываем про различные способы монетизации,
 					способы которые реально работают.
@@ -120,11 +120,11 @@
 			</div>
 			<div class = "footer__element">
 				<h2 class="footer__text">Поддержка</h2>
-				<p class="footer__text"><a href="#" class="footer__link">bigmoney.support@mail.ru</a></p>
+				<p class="footer__text"><a href="#" class="footer__link">KeyFromMoney.support@mail.ru</a></p>
 			</div>
 		</div>
 		<div class="footer__end">
-			<p class="footer__text mini-text">BigMoney © Все права защищены</p>
+			<p class="footer__text mini-text">KeyFromMoney © Все права защищены</p>
 		</div>
 	</footer>
 </form>
